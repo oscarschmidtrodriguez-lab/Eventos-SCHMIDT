@@ -4,12 +4,12 @@ Panel interno organizado en apartados independientes, navegables desde
 el menú superior. Cada apartado vive en su propio módulo (`sections/`)
 y funciona sin depender de que los demás estén construidos.
 
-- **Personal** — construido. Personas (conductores, camareros, azafatas,
-  técnicos) y su disponibilidad por día y franja horaria.
-- **Eventos** — construido. Ficha de evento, estado, checklist de
-  recursos y timeline (ver detalle más abajo).
-- **Flota** — próximamente.
-- **Lugares / Venues** — próximamente.
+* **Personal** — construido. Personas (conductores, camareros, azafatas,
+técnicos) y su disponibilidad por día y franja horaria.
+* **Eventos** — construido. Ficha de evento, estado, checklist de
+recursos y timeline (ver detalle más abajo).
+* **Flota** — próximamente.
+* **Lugares / Venues** — próximamente.
 
 Los apartados se conectarán entre sí (un evento podrá tirar de personal
 disponible o de un venue guardado) en una fase posterior explícita —
@@ -36,7 +36,7 @@ Varias personas pueden usar la herramienta a la vez, cada una con su
 propio usuario:
 
 ```bash
-export FLASK_APP=app.py
+export FLASK\_APP=app.py
 flask add-user maria "contraseña-de-maria"
 ```
 
@@ -45,7 +45,7 @@ flask add-user maria "contraseña-de-maria"
 Esto borra todos los datos:
 
 ```bash
-export FLASK_APP=app.py
+export FLASK\_APP=app.py
 flask init-db
 ```
 
@@ -53,7 +53,7 @@ flask init-db
 
 ```
 app.py                  # crea la app y registra cada apartado (blueprint)
-auth.py                 # login / logout, decorador login_required
+auth.py                 # login / logout, decorador login\_required
 extensions.py           # conexión a la base de datos, comandos flask
 sections/
   personal/routes.py    # apartado Personal (construido)
@@ -62,8 +62,8 @@ sections/
   lugares/routes.py     # placeholder "próximamente"
 templates/
   base.html             # menú superior de apartados + sub-menú por apartado
-  personal/*.html
-  eventos/*.html
+  personal/\*.html
+  eventos/\*.html
   proximamente.html     # plantilla compartida de los apartados vacíos
 schema.sql               # tablas (compartidas por ahora; cada apartado
                           # podrá añadir las suyas cuando se construya)
@@ -75,40 +75,42 @@ los demás apartados.
 
 ## Qué hace "Personal"
 
-- **Personas**: alta, edición y baja de personas con nombre, rol
-  (conductor/camarero/azafata/técnico), teléfono y zona donde pueden
-  trabajar.
-- **Disponibilidad**: por cada persona, marcar día + franja
-  (mañana/tarde/noche) como Disponible, No disponible o Asignado.
-- **Buscar disponibles**: filtrar por fecha, franja y rol para ver
-  quién está disponible ese día.
+* **Personas**: alta, edición y baja de personas con nombre, rol
+(conductor/camarero/azafata/técnico), teléfono y zona donde pueden
+trabajar.
+* **Disponibilidad**: por cada persona, marcar día + franja
+(mañana/tarde/noche) como Disponible, No disponible o Asignado.
+* **Buscar disponibles**: filtrar por fecha, franja y rol para ver
+quién está disponible ese día.
 
 ## Qué hace "Eventos"
 
-- **Ficha de evento**: nombre, cliente, tipo (boda/corporativo/feria/
-  presentación de producto/privado/otro), fecha (o rango de fechas),
-  ubicación (texto libre por ahora), invitados previstos, horario,
-  presupuesto opcional y notas/requisitos especiales.
-- **Estado**: en negociación / confirmado / en curso / finalizado /
-  cancelado, cambiable a mano desde la ficha.
-- **Recursos necesarios**: checklist manual de personal y vehículos
-  (categoría + descripción libre + cantidad) con un marcador
-  asignado/sin asignar. Todavía **no** se conecta con la disponibilidad
-  real de Personal ni con Flota — eso es una fase posterior.
-- **Línea de tiempo**: hitos con hora y descripción (agenda simple del
-  propio evento). Todavía **no** calcula márgenes de traslado ni
-  logística automática.
-- **Listado**: filtrable por estado, tipo, cuándo (próximos/pasados) y
-  cliente.
-- **Calendario mensual**: los eventos en su día, con navegación entre
-  meses.
-- La ubicación es texto libre y no está conectada (todavía) con el
-  apartado de Lugares/Venues.
+* **Ficha de evento**: nombre, cliente, tipo (boda/corporativo/feria/
+presentación de producto/privado/otro), fecha (o rango de fechas),
+ubicación (texto libre por ahora), invitados previstos, horario,
+presupuesto opcional y notas/requisitos especiales.
+* **Estado**: en negociación / confirmado / en curso / finalizado /
+cancelado, cambiable a mano desde la ficha.
+* **Recursos necesarios**: checklist manual de personal y vehículos
+(categoría + descripción libre + cantidad) con un marcador
+asignado/sin asignar. Todavía **no** se conecta con la disponibilidad
+real de Personal ni con Flota — eso es una fase posterior.
+* **Línea de tiempo**: hitos con hora y descripción (agenda simple del
+propio evento). Todavía **no** calcula márgenes de traslado ni
+logística automática.
+* **Listado**: filtrable por estado, tipo, cuándo (próximos/pasados) y
+cliente.
+* **Calendario mensual**: los eventos en su día, con navegación entre
+meses.
+* La ubicación es texto libre y no está conectada (todavía) con el
+apartado de Lugares/Venues.
 
 ## Notas
 
-- Pensado para correr en local por ahora; no hay despliegue configurado.
-- El login es básico (usuario/contraseña), sin roles ni permisos
-  diferenciados — cualquier usuario puede ver y editar todo.
-- Cambia `SECRET_KEY` (variable de entorno) antes de exponerlo fuera
-  de tu máquina.
+* Pensado para correr en local por ahora; no hay despliegue configurado.
+* El login es básico (usuario/contraseña), sin roles ni permisos
+diferenciados — cualquier usuario puede ver y editar todo.
+* Cambia `SECRET\_KEY` (variable de entorno) antes de exponerlo fuera
+de tu máquina.
+* Deploy actualizado.
+
