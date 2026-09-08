@@ -14,6 +14,8 @@ def create_app():
     app = Flask(__name__)
     app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-key-cambia-esto-en-produccion")
     app.config["BASE_URL"] = os.environ.get("BASE_URL", "http://127.0.0.1:5000")
+    app.config["GOOGLE_CLIENT_ID"] = os.environ.get("GOOGLE_CLIENT_ID", "")
+    app.config["GOOGLE_CLIENT_SECRET"] = os.environ.get("GOOGLE_CLIENT_SECRET", "")
 
     app.teardown_appcontext(close_db)
     register_cli(app)
