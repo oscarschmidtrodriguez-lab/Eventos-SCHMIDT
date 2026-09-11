@@ -134,12 +134,6 @@ def login_google_callback():
 @bp.route("/registro", methods=["GET", "POST"])
 def registro():
     db = get_db()
-    hay_usuarios = db.execute("SELECT COUNT(*) AS n FROM users").fetchone()["n"] > 0
-    autorizado = "user_id" in session or not hay_usuarios
-
-    if not autorizado:
-        flash("Ya existe un administrador. Pide que te den de alta desde el panel.")
-        return redirect(url_for("auth.login"))
 
     if request.method == "POST":
         email = request.form.get("email", "").strip().lower()
@@ -161,8 +155,9 @@ def registro():
             flash(f"Ya existe una cuenta con el email {email}.")
             return render_template("registro.html")
 
-        if not hay_usuarios:
-            user = db.execute("SELECT * FROM users WHERE email = ?", (email,)).fetchone()
+        estaba_logueado = "user_id" in session
+        user = db.execute("SELECT * FROM users WHERE email = ?", (email,)).fetchone()
+        if not estaba_logueado:
             _log_in_user(user)
             return redirect(url_for("index"))
 

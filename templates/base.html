@@ -36,7 +36,7 @@
   </nav>
   {% endif %}
   {% endif %}
-  <main>
+  <main class="{{ 'auth-page' if request.endpoint in ('auth.login', 'auth.registro') else '' }}">
     {% with messages = get_flashed_messages() %}
       {% if messages %}
         <ul class="flashes">

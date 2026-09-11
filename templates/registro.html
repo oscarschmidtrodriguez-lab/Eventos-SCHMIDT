@@ -1,21 +1,26 @@
 {% extends "base.html" %}
 {% block title %}Crear cuenta{% endblock %}
 {% block content %}
-<div class="card login-card">
-  <h1>Crear cuenta</h1>
-  <form method="post">
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" autofocus required>
+<div class="auth-shell">
+  <div class="auth-logo">Eventos Schmidt</div>
+  <div class="auth-card">
+    <h1>Crear tu cuenta de Eventos Schmidt</h1>
+    <form method="post">
+      <label for="email">Correo electrónico</label>
+      <input type="email" id="email" name="email" autofocus required>
 
-    <label for="password">Contraseña</label>
-    <input type="password" id="password" name="password" minlength="6" required>
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" name="password" minlength="6" required>
 
-    <button type="submit">Crear cuenta</button>
-  </form>
+      <button type="submit" class="auth-submit">Crear cuenta</button>
+    </form>
+  </div>
+
   {% if not session.get('user_id') %}
-  <p class="hint" style="margin-top: 1rem;">
-    <a href="{{ url_for('auth.login') }}">Ya tengo cuenta, iniciar sesión</a>
-  </p>
+  <div class="auth-switch">
+    <p>¿Ya tienes cuenta?</p>
+    <a class="auth-outline-button" href="{{ url_for('auth.login') }}">Iniciar sesión</a>
+  </div>
   {% endif %}
 </div>
 {% endblock %}

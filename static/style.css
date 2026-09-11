@@ -136,6 +136,93 @@ h3 { font-size: 1.2rem; }
   margin: 4rem auto;
 }
 
+main.auth-page {
+  max-width: none;
+  min-height: calc(100vh - 3rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.25rem;
+}
+
+.auth-shell {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.auth-logo {
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.auth-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.25rem 2rem;
+  text-align: left;
+  box-shadow: 0 24px 48px -28px rgba(0, 0, 0, .6);
+}
+
+.auth-card h1 {
+  font-size: 1.35rem;
+  font-style: normal;
+  text-align: center;
+  margin: 0 0 1.75rem;
+}
+
+.auth-submit {
+  width: 100%;
+  border-radius: 999px;
+  padding: 0.85rem;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border: none;
+}
+
+.auth-secondary {
+  border-radius: 999px;
+}
+
+.auth-switch {
+  margin-top: 2rem;
+  text-align: center;
+}
+.auth-switch p {
+  color: var(--muted);
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+}
+
+.auth-outline-button {
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--muted);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.auth-outline-button:hover {
+  border-color: var(--text);
+}
+
+.auth-card form input[type="email"],
+.auth-card form input[type="password"] {
+  border-radius: 999px;
+  padding: 0.75rem 1.1rem;
+}
+
 .login-divider {
   display: flex;
   align-items: center;
