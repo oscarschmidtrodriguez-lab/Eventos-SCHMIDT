@@ -16,6 +16,12 @@ def create_app():
     app.config["BASE_URL"] = os.environ.get("BASE_URL", "http://127.0.0.1:5000")
     app.config["GOOGLE_CLIENT_ID"] = os.environ.get("GOOGLE_CLIENT_ID", "")
     app.config["GOOGLE_CLIENT_SECRET"] = os.environ.get("GOOGLE_CLIENT_SECRET", "")
+    app.config["FACEBOOK_CLIENT_ID"] = os.environ.get("FACEBOOK_CLIENT_ID", "")
+    app.config["FACEBOOK_CLIENT_SECRET"] = os.environ.get("FACEBOOK_CLIENT_SECRET", "")
+    app.config["APPLE_CLIENT_ID"] = os.environ.get("APPLE_CLIENT_ID", "")
+    app.config["APPLE_TEAM_ID"] = os.environ.get("APPLE_TEAM_ID", "")
+    app.config["APPLE_KEY_ID"] = os.environ.get("APPLE_KEY_ID", "")
+    app.config["APPLE_PRIVATE_KEY"] = os.environ.get("APPLE_PRIVATE_KEY", "")
 
     app.teardown_appcontext(close_db)
     register_cli(app)

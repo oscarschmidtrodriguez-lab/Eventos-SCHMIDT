@@ -40,6 +40,36 @@ export FLASK_APP=app.py
 flask add-user maria "contraseña-de-maria"
 ```
 
+## Login con Google / Facebook / Apple (opcional)
+
+Cada proveedor solo aparece en la pantalla de inicio de sesión si sus
+variables de entorno están definidas; si faltan, ese botón no se muestra.
+
+```bash
+# Google
+GOOGLE_CLIENT_ID=...
+GOOGLE_CLIENT_SECRET=...
+
+# Facebook
+FACEBOOK_CLIENT_ID=...
+FACEBOOK_CLIENT_SECRET=...
+
+# Apple ("Sign in with Apple")
+APPLE_CLIENT_ID=...       # Services ID
+APPLE_TEAM_ID=...
+APPLE_KEY_ID=...
+APPLE_PRIVATE_KEY=...     # contenido del .p8, con \n si va en una sola línea
+```
+
+En cada proveedor hay que registrar como URI de redirección:
+`https://tu-dominio/login/google/callback` (o `/login/facebook/callback`,
+`/login/apple/callback`). Si actualizas una base de datos ya existente
+creada antes de esta función, ejecuta una vez:
+
+```bash
+python migrate_social_login.py
+```
+
 ## Reiniciar la base de datos desde cero
 
 Esto borra todos los datos:
