@@ -58,15 +58,28 @@ def _log_in_user(user):
     session["email"] = user["email"]
 
 
-def _find_or_link_user(db, provider_column, provider_id, email):
-    """Find a user by their provider id, linking it to an existing email if needed."""
+def _find_or_create_user(db, provider_column, provider_id, email):
+    """Find a user by their provider id (linking it to a matching email if needed),
+    or create a new account for them if neither exists yet."""
     user = db.execute(f"SELECT * FROM users WHERE {provider_column} = ?", (provider_id,)).fetchone()
-    if not user and email:
-        user = db.execute("SELECT * FROM users WHERE email = ?", (email,)).fetchone()
-        if user:
-            db.execute(f"UPDATE users SET {provider_column} = ? WHERE id = ?", (provider_id, user["id"]))
-            db.commit()
-    return user
+    if user:
+        return user
+
+    if not email:
+        return None
+
+    user = db.execute("SELECT * FROM users WHERE email = ?", (email,)).fetchone()
+    if user:
+        db.execute(f"UPDATE users SET {provider_column} = ? WHERE id = ?", (provider_id, user["id"]))
+        db.commit()
+        return user
+
+    try:
+        db.execute(f"INSERT INTO users (email, {provider_column}) VALUES (?, ?)", (email, provider_id))
+        db.commit()
+    except sqlite3.IntegrityError:
+        pass
+    return db.execute("SELECT * FROM users WHERE email = ?", (email,)).fetchone()
 
 
 def _apple_client_secret():
@@ -183,10 +196,10 @@ def login_google_callback():
     email = (info.get("email") or "").strip().lower()
 
     db = get_db()
-    user = _find_or_link_user(db, "google_sub", google_sub, email)
+    user = _find_or_create_user(db, "google_sub", google_sub, email)
 
     if not user:
-        flash(f"La cuenta {email} no tiene acceso a este panel. Pide que te den de alta.")
+        flash("Tu cuenta de Google no compartió un email, no se pudo crear la cuenta.")
         return redirect(url_for("auth.login"))
 
     _log_in_user(user)
@@ -258,10 +271,10 @@ def login_facebook_callback():
     email = (info.get("email") or "").strip().lower()
 
     db = get_db()
-    user = _find_or_link_user(db, "facebook_id", facebook_id, email)
+    user = _find_or_create_user(db, "facebook_id", facebook_id, email)
 
     if not user:
-        flash(f"La cuenta {email or 'de Facebook'} no tiene acceso a este panel. Pide que te den de alta.")
+        flash("Tu cuenta de Facebook no compartió un email, no se pudo crear la cuenta.")
         return redirect(url_for("auth.login"))
 
     _log_in_user(user)
@@ -331,10 +344,10 @@ def login_apple_callback():
     email = (claims.get("email") or "").strip().lower()
 
     db = get_db()
-    user = _find_or_link_user(db, "apple_sub", apple_sub, email)
+    user = _find_or_create_user(db, "apple_sub", apple_sub, email)
 
     if not user:
-        flash(f"La cuenta {email or 'de Apple'} no tiene acceso a este panel. Pide que te den de alta.")
+        flash("Tu cuenta de Apple no compartió un email, no se pudo crear la cuenta.")
         return redirect(url_for("auth.login"))
 
     _log_in_user(user)
