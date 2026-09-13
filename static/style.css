@@ -260,6 +260,38 @@ main.auth-page {
   background: #000;
 }
 
+.auth-email-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background: #000;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.75rem 1.2rem;
+  margin: 0 0 1.5rem;
+  font-size: 0.95rem;
+}
+.auth-email-summary span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.auth-change-email {
+  background: none;
+  border: none;
+  color: var(--accent-hover);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+.auth-change-email:hover {
+  text-decoration: underline;
+}
+
 .login-divider {
   display: flex;
   align-items: center;

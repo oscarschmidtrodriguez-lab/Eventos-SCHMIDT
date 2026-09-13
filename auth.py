@@ -361,12 +361,20 @@ def registro():
     if request.method == "POST":
         email = request.form.get("email", "").strip().lower()
         password = request.form.get("password", "")
-        if not email or not password:
-            flash("Rellena email y contraseña.")
+        password2 = request.form.get("password2", "")
+
+        if not email:
+            flash("Escribe tu email.")
             return render_template("registro.html")
+        if not password or not password2:
+            flash("Rellena las dos contraseñas.")
+            return render_template("registro.html", email=email, show_password_step=True)
         if len(password) < 6:
             flash("La contraseña debe tener al menos 6 caracteres.")
-            return render_template("registro.html")
+            return render_template("registro.html", email=email, show_password_step=True)
+        if password != password2:
+            flash("Las contraseñas no coinciden.")
+            return render_template("registro.html", email=email, show_password_step=True)
 
         try:
             db.execute(
@@ -376,7 +384,7 @@ def registro():
             db.commit()
         except sqlite3.IntegrityError:
             flash(f"Ya existe una cuenta con el email {email}.")
-            return render_template("registro.html")
+            return render_template("registro.html", email=email)
 
         estaba_logueado = "user_id" in session
         user = db.execute("SELECT * FROM users WHERE email = ?", (email,)).fetchone()
