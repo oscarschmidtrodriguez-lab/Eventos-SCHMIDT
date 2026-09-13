@@ -9,7 +9,9 @@ CREATE TABLE users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     email TEXT UNIQUE NOT NULL,
     password_hash TEXT,
-    google_sub TEXT UNIQUE
+    google_sub TEXT UNIQUE,
+    facebook_id TEXT UNIQUE,
+    apple_sub TEXT UNIQUE
 );
 
 CREATE TABLE personas (
