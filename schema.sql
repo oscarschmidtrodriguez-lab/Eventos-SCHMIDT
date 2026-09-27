@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS disenos;
 DROP TABLE IF EXISTS disponibilidad;
 DROP TABLE IF EXISTS personas;
 DROP TABLE IF EXISTS evento_hitos;
@@ -86,4 +87,14 @@ CREATE TABLE confirmaciones (
     comentario TEXT,
     respondido_at TEXT NOT NULL,
     UNIQUE(evento_id, persona_id)
+);
+
+CREATE TABLE disenos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    peticion TEXT NOT NULL,
+    estilo TEXT NOT NULL,
+    fuente TEXT NOT NULL,
+    proyecto TEXT NOT NULL,
+    created_at TEXT NOT NULL
 );

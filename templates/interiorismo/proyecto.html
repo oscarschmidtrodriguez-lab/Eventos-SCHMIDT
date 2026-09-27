@@ -1,0 +1,809 @@
+{% extends "base.html" %}
+
+{% block title %}{{ proyecto.titulo }} - Diseño de Interiores{% endblock %}
+
+{% block content %}
+<div class="proyecto-container">
+  <div class="proyecto-header">
+    <div class="header-content">
+      <h1>{{ proyecto.titulo }}</h1>
+      <p class="header-meta">
+        <span class="meta-item">Petición: <em>{{ peticion[:60] }}...</em></span>
+        <span class="meta-item">Estilo: <strong>{{ estilo }}</strong></span>
+        <span class="meta-item">Fuente: <span class="badge" style="background: var(--accent-soft); color: var(--accent);">{{ fuente }}</span></span>
+      </p>
+    </div>
+    <div class="header-actions">
+      <a href="{{ url_for('interiorismo.index') }}" class="btn-secondary">← Volver</a>
+      <form method="POST" action="{{ url_for('interiorismo.borrar', id=id) }}" style="display: inline;">
+        <button type="submit" class="btn-danger" onclick="return confirm('¿Eliminar este proyecto?')">🗑️ Eliminar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- CONCEPTO Y PRINCIPIOS -->
+  <div class="card">
+    <h2>Concepto</h2>
+    <p class="concepto-text">{{ proyecto.concepto }}</p>
+
+    <h3>Principios de diseño</h3>
+    <ul class="principios-list">
+      {% for principio in proyecto.principios %}
+      <li>{{ principio }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- PALETA DE COLORES -->
+  <div class="card">
+    <h2>Paleta de colores</h2>
+    <div class="paleta-grid">
+      {% for color in proyecto.paleta %}
+      <div class="color-swatch">
+        <div class="color-box" style="background-color: {{ color.hex }};"></div>
+        <h4>{{ color.nombre }}</h4>
+        <code class="color-code">{{ color.hex }}</code>
+        <p class="color-uso">{{ color.uso }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- MATERIALES -->
+  <div class="card">
+    <h2>Materiales especificados</h2>
+    <div class="materiales-list">
+      {% for material in proyecto.materiales %}
+      <div class="material-item">
+        <strong class="material-nombre">{{ material.nombre }}</strong>
+        <p class="material-donde">{{ material.donde }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- ILUMINACIÓN -->
+  <div class="card">
+    <h2>Plan de iluminación</h2>
+    <div class="iluminacion-section">
+      <div class="iluminacion-concepto">
+        <h3>Concepto luminoso</h3>
+        <p>{{ proyecto.iluminacion.concepto }}</p>
+      </div>
+
+      <div class="viga-descripcion">
+        <h3>Elemento principal: Viga LED</h3>
+        <div class="viga-detail">
+          <p>{{ proyecto.iluminacion.viga_led }}</p>
+        </div>
+      </div>
+
+      <div class="capas-luz">
+        <h3>Capas de iluminación</h3>
+        <div class="capas-grid">
+          {% for capa in proyecto.iluminacion.capas %}
+          <div class="capa-item">
+            <span class="capa-tipo" style="background: var(--accent-soft); color: var(--accent);">{{ capa.tipo }}</span>
+            <p class="capa-detalle">{{ capa.detalle }}</p>
+            <span class="capa-temp">{{ capa.temperatura }}</span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESTANCIAS -->
+  <div class="card">
+    <h2>Espacios y distribución</h2>
+    <div class="estancias-container">
+      {% for estancia in proyecto.estancias %}
+      <div class="estancia-card">
+        <h3>{{ estancia.nombre }}</h3>
+
+        <div class="estancia-section">
+          <h4>Distribución</h4>
+          <p>{{ estancia.distribucion }}</p>
+        </div>
+
+        <div class="estancia-section">
+          <h4>Mobiliario</h4>
+          <ul class="list-items">
+            {% for item in estancia.mobiliario %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="estancia-section">
+          <h4>Iluminación</h4>
+          <ul class="list-items">
+            {% for item in estancia.iluminacion %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="estancia-section">
+          <h4>Decoración</h4>
+          <ul class="list-items">
+            {% for item in estancia.decoracion %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="estancia-toque">
+          <strong>💡 Toque experto:</strong>
+          <p>{{ estancia.toque_experto }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- RENDER/VISUALIZACIÓN DE COLORES -->
+  <div class="card">
+    <h2>Visualización de colores por estancia</h2>
+    <div class="render-preview">
+      <div class="room-sketch">
+        <div class="sketch-wall" style="background-color: {{ proyecto.render.pared }};"></div>
+        <div class="sketch-ceiling" style="background-color: {{ proyecto.render.techo }};"></div>
+        <div class="sketch-floor" style="background-color: {{ proyecto.render.suelo }};"></div>
+        <div class="sketch-beam" style="background-color: {{ proyecto.render.viga }};"></div>
+        <div class="sketch-sofa" style="background-color: {{ proyecto.render.sofa }};"></div>
+        <div class="sketch-wood" style="background-color: {{ proyecto.render.madera }};"></div>
+        <div class="sketch-metal" style="background-color: {{ proyecto.render.metal }};"></div>
+        <div class="sketch-accent" style="background-color: {{ proyecto.render.acento }};"></div>
+      </div>
+
+      <div class="render-legend">
+        <div class="legend-item">
+          <div class="legend-color" style="background-color: {{ proyecto.render.pared }};"></div>
+          <span>Paredes</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background-color: {{ proyecto.render.suelo }};"></div>
+          <span>Suelo</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background-color: {{ proyecto.render.techo }};"></div>
+          <span>Techo</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background-color: {{ proyecto.render.viga }};"></div>
+          <span>Viga</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background-color: {{ proyecto.render.sofa }};"></div>
+          <span>Sofá/Textil principal</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background-color: {{ proyecto.render.madera }};"></div>
+          <span>Madera</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background-color: {{ proyecto.render.metal }};"></div>
+          <span>Metal</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background-color: {{ proyecto.render.acento }};"></div>
+          <span>Acento</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background-color: {{ proyecto.render.led }};"></div>
+          <span>LED</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONSEJOS DEL EXPERTO -->
+  <div class="card">
+    <h2>Consejos del experto</h2>
+    <div class="consejos-list">
+      {% for consejo in proyecto.consejos %}
+      <div class="consejo-item">
+        <span class="consejo-num">{{ loop.index }}</span>
+        <p>{{ consejo }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- PRESUPUESTO -->
+  <div class="card presupuesto-card">
+    <h2>Presupuesto orientativo</h2>
+    <div class="presupuesto-table">
+      {% for partida in proyecto.presupuesto %}
+      <div class="presupuesto-row">
+        <span class="partida-nombre">{{ partida.partida }}</span>
+        <span class="partida-rango">{{ partida.rango }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    <p class="presupuesto-disclaimer">
+      💡 <em>Estos valores son orientativos y pueden variar según la zona, proveedores elegidos y nivel de personalización.</em>
+    </p>
+  </div>
+
+</div>
+
+<style>
+.proyecto-container {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.proyecto-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.header-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.proyecto-header h1 {
+  margin: 0 0 0.8rem;
+  font-size: 2.2rem;
+}
+
+.header-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.meta-item em {
+  color: var(--text);
+  font-style: italic;
+}
+
+.meta-item strong {
+  color: var(--accent);
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  align-self: flex-start;
+}
+
+.btn-secondary {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.7rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-danger {
+  background: var(--danger-bg);
+  border: 1px solid var(--danger);
+  color: var(--danger);
+  padding: 0.7rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-danger:hover {
+  background: var(--danger);
+  color: #fff;
+}
+
+.concepto-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.principios-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.principios-list li {
+  padding-left: 2rem;
+  position: relative;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.principios-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.paleta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.color-swatch {
+  text-align: center;
+}
+
+.color-box {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  border: 2px solid var(--border);
+  margin-bottom: 0.8rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.color-swatch:hover .color-box {
+  transform: scale(1.05);
+}
+
+.color-swatch h4 {
+  margin: 0 0 0.3rem;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.color-code {
+  display: block;
+  background: var(--surface-2);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  color: var(--accent);
+  font-size: 0.8rem;
+  margin: 0.3rem 0;
+  font-family: monospace;
+}
+
+.color-uso {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+
+.materiales-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.material-item {
+  background: var(--surface-2);
+  border-left: 3px solid var(--accent);
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.material-nombre {
+  display: block;
+  color: var(--text);
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+}
+
+.material-donde {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.iluminacion-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.iluminacion-concepto,
+.viga-descripcion {
+  background: var(--surface-2);
+  padding: 1.2rem;
+  border-radius: 6px;
+  border-left: 3px solid var(--accent);
+}
+
+.iluminacion-concepto h3,
+.viga-descripcion h3 {
+  margin-top: 0;
+  color: var(--text);
+}
+
+.iluminacion-concepto p,
+.viga-descripcion p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.capas-luz h3 {
+  margin-top: 0;
+  color: var(--text);
+}
+
+.capas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.capa-item {
+  background: var(--surface-2);
+  padding: 1rem;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  border: 1px solid var(--border);
+}
+
+.capa-tipo {
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  width: fit-content;
+}
+
+.capa-detalle {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  flex-grow: 1;
+}
+
+.capa-temp {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.estancias-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.estancia-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.estancia-card h3 {
+  margin: 0;
+  color: var(--text);
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid var(--accent);
+}
+
+.estancia-section h4 {
+  margin: 0 0 0.6rem;
+  color: var(--accent);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.estancia-section p {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+.list-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.list-items li {
+  color: var(--text);
+  padding-left: 1.2rem;
+  position: relative;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.list-items li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.estancia-toque {
+  margin-top: 0.8rem;
+  padding: 0.8rem;
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+}
+
+.estancia-toque strong {
+  color: var(--accent);
+}
+
+.estancia-toque p {
+  margin: 0.4rem 0 0;
+  color: var(--text);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.render-preview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 1rem;
+  align-items: center;
+}
+
+.room-sketch {
+  aspect-ratio: 1;
+  background: var(--surface-2);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-areas:
+    "ceiling ceiling ceiling"
+    "wall sofa wall"
+    "floor floor floor";
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
+}
+
+.sketch-ceiling {
+  grid-area: ceiling;
+}
+
+.sketch-wall {
+  grid-area: wall;
+}
+
+.sketch-floor {
+  grid-area: floor;
+}
+
+.sketch-beam {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  height: 20%;
+  opacity: 0.9;
+}
+
+.sketch-sofa {
+  grid-area: sofa;
+  border-radius: 6px;
+  margin: auto;
+  width: 80%;
+  height: 70%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.sketch-wood {
+  display: none;
+}
+
+.sketch-metal {
+  display: none;
+}
+
+.sketch-accent {
+  display: none;
+}
+
+.render-legend {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem;
+  background: var(--surface-2);
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.legend-color {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.consejos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.consejo-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--surface-2);
+  border-radius: 6px;
+  border-left: 3px solid var(--accent);
+}
+
+.consejo-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  background: var(--accent);
+  color: #05070d;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.consejo-item p {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.presupuesto-card {
+  margin-bottom: 2rem;
+}
+
+.presupuesto-table {
+  margin-top: 1rem;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.presupuesto-row {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 1rem;
+  padding: 0.9rem;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+}
+
+.presupuesto-row:last-child {
+  border-bottom: none;
+}
+
+.presupuesto-row:nth-child(even) {
+  background: var(--surface-2);
+}
+
+.partida-nombre {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.partida-rango {
+  color: var(--accent);
+  font-weight: 600;
+  text-align: right;
+}
+
+.presupuesto-disclaimer {
+  margin-top: 1rem;
+  padding: 0.9rem;
+  background: var(--warn-bg);
+  border-radius: 6px;
+  color: var(--warn);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+  .proyecto-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .header-meta {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .render-preview {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .render-legend {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .estancias-container {
+    grid-template-columns: 1fr;
+  }
+
+  .presupuesto-row {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+
+  .partida-rango {
+    text-align: left;
+  }
+}
+</style>
+{% endblock %}

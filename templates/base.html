@@ -18,6 +18,7 @@
     <a class="logout" href="{{ url_for('auth.logout') }}">Salir</a>
   </nav>
   <nav class="sections-nav">
+    <a href="{{ url_for('interiorismo.index') }}" class="{{ 'active' if request.blueprint == 'interiorismo' }}">Interiorismo IA</a>
     <a href="{{ url_for('personal.buscar') }}" class="{{ 'active' if request.blueprint == 'personal' }}">Personal</a>
     <a href="{{ url_for('eventos.index') }}" class="{{ 'active' if request.blueprint == 'eventos' }}">Eventos</a>
     <a href="{{ url_for('flota.index') }}" class="{{ 'active' if request.blueprint == 'flota' }}">Flota</a>

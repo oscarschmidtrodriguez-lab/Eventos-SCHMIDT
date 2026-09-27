@@ -1,0 +1,569 @@
+{% extends "base.html" %}
+
+{% block title %}Diseño de Interiores IA - Eventos Schmidt{% endblock %}
+
+{% block content %}
+<div class="interiorismo-container">
+  <div class="page-header">
+    <div>
+      <h1>Diseño de Interiores IA</h1>
+      <p class="subtitle">Transforma tu espacio con diseños personalizados generados por inteligencia artificial</p>
+    </div>
+  </div>
+
+  <!-- FORMULARIO DE PETICIÓN -->
+  <div class="card">
+    <h2>Cuéntame tu visión</h2>
+    <form method="POST" action="{{ url_for('interiorismo.disenar') }}" class="design-form">
+      <div class="form-group">
+        <label for="peticion">¿Cómo quieres que sea tu casa?</label>
+        <textarea
+          id="peticion"
+          name="peticion"
+          placeholder="Ejemplo: Quiero una casa elegante y moderna con 3 habitaciones, salón amplio, abierto al jardín. Que sea minimalista, con mucho blanco y negro, que parezca un hotel de lujo. Tengo perro así que necesito que los suelos sean resistentes."
+          required
+          rows="5"
+          class="textarea-input"></textarea>
+        <small>Menciona: habitaciones, baños, estilo deseado, colores, si tienes mascotas, piscina, terraza, etc.</small>
+      </div>
+
+      <div class="form-group">
+        <label for="estilo_sugerido">Estilo sugerido (opcional)</label>
+        <div class="style-buttons">
+          <button type="button" class="style-btn" data-style="" title="Dejar que la IA detecte automáticamente">
+            <span class="style-dot" style="background: linear-gradient(135deg, #5b87d6 0%, #7fa3e6 100%);"></span>
+            <span>Automático</span>
+          </button>
+          <button type="button" class="style-btn" data-style="moderno_elegante" title="Blanco, negro y espacios de lujo">
+            <span class="style-dot" style="background: linear-gradient(135deg, #F4F2EE 0%, #1C1C1E 100%);"></span>
+            <span>Moderno elegante</span>
+          </button>
+          <button type="button" class="style-btn" data-style="minimalista" title="Menos es más">
+            <span class="style-dot" style="background: linear-gradient(135deg, #FFFFFF 0%, #D6D6D3 100%);"></span>
+            <span>Minimalista</span>
+          </button>
+          <button type="button" class="style-btn" data-style="nordico" title="Luz, madera y calidez">
+            <span class="style-dot" style="background: linear-gradient(135deg, #F5F5F0 0%, #C8A882 100%);"></span>
+            <span>Nórdico</span>
+          </button>
+          <button type="button" class="style-btn" data-style="japandi" title="Precisión nipona + calidez nórdica">
+            <span class="style-dot" style="background: linear-gradient(135deg, #F4F1E8 0%, #A89968 100%);"></span>
+            <span>Japandi</span>
+          </button>
+          <button type="button" class="style-btn" data-style="industrial" title="Ladrillo, hierro y hormigón">
+            <span class="style-dot" style="background: linear-gradient(135deg, #6B4423 0%, #2C2C2C 100%);"></span>
+            <span>Industrial</span>
+          </button>
+          <button type="button" class="style-btn" data-style="mediterraneo" title="Mar, sol y descanso">
+            <span class="style-dot" style="background: linear-gradient(135deg, #F5E6D3 0%, #E8B05B 100%);"></span>
+            <span>Mediterráneo</span>
+          </button>
+          <button type="button" class="style-btn" data-style="clasico_lujo" title="Elegancia clásica atemporal">
+            <span class="style-dot" style="background: linear-gradient(135deg, #D4AF37 0%, #2B1B0A 100%);"></span>
+            <span>Clásico lujo</span>
+          </button>
+          <button type="button" class="style-btn" data-style="boho" title="Arte, textiles y naturaleza">
+            <span class="style-dot" style="background: linear-gradient(135deg, #E8D4C4 0%, #A0826D 100%);"></span>
+            <span>Boho</span>
+          </button>
+        </div>
+        <input type="hidden" id="estilo_oculto" name="estilo_oculto" value="">
+      </div>
+
+      <button type="submit" class="btn-primary">Generar diseño</button>
+    </form>
+  </div>
+
+  <!-- EJEMPLOS DE PETICIONES -->
+  <div class="card">
+    <h2>Inspiración: Peticiones de ejemplo</h2>
+    <div class="examples-grid">
+      <div class="example-box">
+        <h3>Casa moderna con despacho</h3>
+        <p>"Quiero una casa elegante y moderna con 4 habitaciones, un despacho para trabajar desde casa, salón muy abierto. Paleta de blanco y negro. Todo con líneas rectas y minimalista."</p>
+        <form method="POST" action="{{ url_for('interiorismo.disenar') }}" style="display: inline;">
+          <input type="hidden" name="peticion" value="Quiero una casa elegante y moderna con 4 habitaciones, un despacho para trabajar desde casa, salón muy abierto. Paleta de blanco y negro. Todo con líneas rectas y minimalista.">
+          <input type="hidden" name="estilo_oculto" value="">
+          <button type="submit" class="btn-small">Generar</button>
+        </form>
+      </div>
+
+      <div class="example-box">
+        <h3>Familia con niños, nórdico</h3>
+        <p>"Somos una familia con dos niños. Queremos una casa cálida, nórdica, mucha madera. 3 dormitorios infantiles, cocina grande, salón abierto. Que sea práctica pero hermosa."</p>
+        <form method="POST" action="{{ url_for('interiorismo.disenar') }}" style="display: inline;">
+          <input type="hidden" name="peticion" value="Somos una familia con dos niños. Queremos una casa cálida, nórdica, mucha madera. 3 dormitorios infantiles, cocina grande, salón abierto. Que sea práctica pero hermosa.">
+          <input type="hidden" name="estilo_oculto" value="">
+          <button type="submit" class="btn-small">Generar</button>
+        </form>
+      </div>
+
+      <div class="example-box">
+        <h3>Apartamento bohemio</h3>
+        <p>"Apartamento pequeño de 60 m². Buscamos boho, textiles, plantas, colores cálidos. Que respire arte y naturaleza. Poco dinero, mucha creatividad."</p>
+        <form method="POST" action="{{ url_for('interiorismo.disenar') }}" style="display: inline;">
+          <input type="hidden" name="peticion" value="Apartamento pequeño de 60 m². Buscamos boho, textiles, plantas, colores cálidos. Que respire arte y naturaleza. Poco dinero, mucha creatividad.">
+          <input type="hidden" name="estilo_oculto" value="">
+          <button type="submit" class="btn-small">Generar</button>
+        </form>
+      </div>
+
+      <div class="example-box">
+        <h3>Casa junto al mar</h3>
+        <p>"Casa de playa de 200 m², con piscina y terraza enorme. Estilo mediterráneo: azules, arena, madera gastada, mucha luz natural. Relajante pero sofisticada."</p>
+        <form method="POST" action="{{ url_for('interiorismo.disenar') }}" style="display: inline;">
+          <input type="hidden" name="peticion" value="Casa de playa de 200 m², con piscina y terraza enorme. Estilo mediterráneo: azules, arena, madera gastada, mucha luz natural. Relajante pero sofisticada.">
+          <input type="hidden" name="estilo_oculto" value="">
+          <button type="submit" class="btn-small">Generar</button>
+        </form>
+      </div>
+
+      <div class="example-box">
+        <h3>Loft industrial</h3>
+        <p>"Loft en antiguo almacén, 150 m², techos altos. Industrial: ladrillo visto, vigas de hierro, suelo de hormigón pulido. Cálida y acogedor pese al estilo."</p>
+        <form method="POST" action="{{ url_for('interiorismo.disenar') }}" style="display: inline;">
+          <input type="hidden" name="peticion" value="Loft en antiguo almacén, 150 m², techos altos. Industrial: ladrillo visto, vigas de hierro, suelo de hormigón pulido. Cálida y acogedor pese al estilo.">
+          <input type="hidden" name="estilo_oculto" value="">
+          <button type="submit" class="btn-small">Generar</button>
+        </form>
+      </div>
+
+      <div class="example-box">
+        <h3>Casa clásica con lujo</h3>
+        <p>"Casa grande, clásica. Oros, maderas nobles, terciopelos, cuadros. Elegancia de época pero moderna. Chimenea. Despacho bibliotecario. Sala de cine."</p>
+        <form method="POST" action="{{ url_for('interiorismo.disenar') }}" style="display: inline;">
+          <input type="hidden" name="peticion" value="Casa grande, clásica. Oros, maderas nobles, terciopelos, cuadros. Elegancia de época pero moderna. Chimenea. Despacho bibliotecario. Sala de cine.">
+          <input type="hidden" name="estilo_oculto" value="">
+          <button type="submit" class="btn-small">Generar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATÁLOGO DE ESTILOS -->
+  <div class="card">
+    <h2>Nuestros estilos</h2>
+    <div class="styles-gallery">
+      <div class="style-card">
+        <div class="style-preview" style="background: linear-gradient(135deg, #F4F2EE 0%, #1C1C1E 50%, #B8895A 100%);"></div>
+        <h3>Moderno Elegante</h3>
+        <p class="style-lema">Blanco, negro y espacios abiertos de lujo</p>
+        <p class="style-desc">Líneas puras, planta abierta, paleta de blanco (70%), negro (20%) y detalles en latón. La escala generosa y la luz indirecta crean calidez sin renunciar a la sofisticación.</p>
+        <span class="style-price">900–1.500 €/m²</span>
+      </div>
+
+      <div class="style-card">
+        <div class="style-preview" style="background: linear-gradient(135deg, #FFFFFF 0%, #D6D6D3 50%, #D2B48C 100%);"></div>
+        <h3>Minimalista</h3>
+        <p class="style-lema">Menos es más: calma, luz y orden</p>
+        <p class="style-desc">Almacenaje oculto, tres colores máximo, luz indirecta que baña las superficies. Cada objeto tiene un propósito. El resultado es una casa que respira.</p>
+        <span class="style-price">700–1.200 €/m²</span>
+      </div>
+
+      <div class="style-card">
+        <div class="style-preview" style="background: linear-gradient(135deg, #F5F5F0 0%, #C8A882 50%, #6B5344 100%);"></div>
+        <h3>Nórdico</h3>
+        <p class="style-lema">Luz, madera clara y calidez sin pretensión</p>
+        <p class="style-desc">Paleta natural: blanco, grises suaves, mucha madera clara. Textiles en lana y lino. Espacios luminosos donde la naturaleza entra por la ventana.</p>
+        <span class="style-price">800–1.300 €/m²</span>
+      </div>
+
+      <div class="style-card">
+        <div class="style-preview" style="background: linear-gradient(135deg, #F4F1E8 0%, #A89968 50%, #3D3D3D 100%);"></div>
+        <h3>Japandi</h3>
+        <p class="style-lema">Precisión nipona + calidez nórdica</p>
+        <p class="style-desc">Fusión de minimalismo japonés y warmth nórdico. Madera clara, líneas exactas, espacios vacíos significativos. Tranquilidad refinada.</p>
+        <span class="style-price">850–1.400 €/m²</span>
+      </div>
+
+      <div class="style-card">
+        <div class="style-preview" style="background: linear-gradient(135deg, #6B4423 0%, #2C2C2C 50%, #E8B05B 100%);"></div>
+        <h3>Industrial</h3>
+        <p class="style-lema">Ladrillo, hierro y hormigón con carácter</p>
+        <p class="style-desc">Lofts con carácter. Ladrillo visto, vigas de hierro, suelo de hormigón. Los detalles cálidos (madera, textiles) suavizan la dureza de los materiales.</p>
+        <span class="style-price">750–1.250 €/m²</span>
+      </div>
+
+      <div class="style-card">
+        <div class="style-preview" style="background: linear-gradient(135deg, #F5E6D3 0%, #E8B05B 50%, #0066CC 100%);"></div>
+        <h3>Mediterráneo</h3>
+        <p class="style-lema">Mar, sol y descanso: la dolce vita</p>
+        <p class="style-desc">Colores del sur: azules, ocres, arena. Terracota, azulejo hidráulico, madera gastada. Abierto al exterior, terrazas generosas, textiles ligeros.</p>
+        <span class="style-price">700–1.200 €/m²</span>
+      </div>
+
+      <div class="style-card">
+        <div class="style-preview" style="background: linear-gradient(135deg, #D4AF37 0%, #8B7355 50%, #2B1B0A 100%);"></div>
+        <h3>Clásico Lujo</h3>
+        <p class="style-lema">Elegancia atemporal y sofisticación</p>
+        <p class="style-desc">Maderas nobles, terciopelos, oros y cristales. Molduras y detalles arquitectónicos. Chimeneas, cortinajes amplios. Lujo discreto y reconocible.</p>
+        <span class="style-price">1.200–2.000 €/m²</span>
+      </div>
+
+      <div class="style-card">
+        <div class="style-preview" style="background: linear-gradient(135deg, #E8D4C4 0%, #A0826D 50%, #8B6A47 100%);"></div>
+        <h3>Boho</h3>
+        <p class="style-lema">Arte, textiles y naturaleza en armonía</p>
+        <p class="style-desc">Colorido pero armónico. Macramé, plantas, cojines en tela. Mezcla de épocas y culturas con buen gusto. Hippie sofisticado, acogedor y personal.</p>
+        <span class="style-price">600–1.000 €/m²</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- DISEÑOS RECIENTES -->
+  {% if disenos %}
+  <div class="card">
+    <h2>Tus proyectos recientes</h2>
+    <div class="projects-list">
+      {% for diseno in disenos %}
+      <div class="project-item">
+        <div class="project-header">
+          <div>
+            <h3>{{ diseno.proyecto.titulo }}</h3>
+            <p class="project-date">{{ diseno.created_at }}</p>
+          </div>
+          <div class="project-actions">
+            <a href="{{ url_for('interiorismo.ver', id=diseno.id) }}" class="btn-small">Ver proyecto</a>
+          </div>
+        </div>
+        <p class="project-request">{{ diseno.peticion[:100] }}...</p>
+        <div class="project-meta">
+          <span class="badge" style="background: var(--accent-soft); color: var(--accent);">{{ diseno.proyecto.titulo }}</span>
+          <span class="badge" style="background: var(--warn-bg); color: var(--warn);">{{ diseno.fuente }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+</div>
+
+<style>
+.interiorismo-container {
+  --interiorismo-accent: #8B6A47;
+}
+
+.design-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.form-group small {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: -0.3rem;
+}
+
+.textarea-input {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.8rem;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  resize: vertical;
+  min-height: 120px;
+  transition: border-color 0.2s;
+}
+
+.textarea-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(91, 135, 214, 0.1);
+}
+
+.style-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.style-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 0.9rem;
+  background: var(--surface-2);
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.style-btn:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.style-btn.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.style-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #05070d;
+  border: none;
+  padding: 0.95rem 1.8rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  align-self: flex-start;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(91, 135, 214, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.examples-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.example-box {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.example-box h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.example-box p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.btn-small {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  align-self: flex-start;
+}
+
+.btn-small:hover {
+  background: var(--accent);
+  color: #05070d;
+}
+
+.styles-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.style-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.style-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px rgba(91, 135, 214, 0.15);
+}
+
+.style-preview {
+  width: 100%;
+  height: 120px;
+  background-size: cover;
+  background-position: center;
+}
+
+.style-card h3 {
+  margin: 0.9rem 1rem 0.2rem;
+  color: var(--text);
+  font-size: 1.1rem;
+}
+
+.style-lema {
+  margin: 0 1rem 0.6rem;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.style-desc {
+  margin: 0 1rem 0.8rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  flex-grow: 1;
+}
+
+.style-price {
+  display: block;
+  margin: 0.8rem 1rem 1rem;
+  color: var(--warn);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.project-item {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.2rem;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.project-header h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.1rem;
+}
+
+.project-date {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.project-request {
+  margin: 0.8rem 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.project-meta {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 640px) {
+  .style-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .examples-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .styles-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .project-header {
+    flex-direction: column;
+  }
+
+  .project-actions {
+    width: 100%;
+  }
+
+  .btn-small {
+    width: 100%;
+    text-align: center;
+  }
+}
+</style>
+
+<script>
+// Manejo de selección de estilos
+document.querySelectorAll('.style-btn').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelectorAll('.style-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    document.getElementById('estilo_oculto').value = this.dataset.style;
+  });
+});
+
+// Pre-llenar el estilo en los formularios de ejemplo
+document.querySelectorAll('.example-box form').forEach(form => {
+  form.addEventListener('submit', function(e) {
+    const styleSelect = document.querySelector('.style-btn.active');
+    if (styleSelect) {
+      form.querySelector('input[name="estilo_oculto"]').value = styleSelect.dataset.style;
+    }
+  });
+});
+</script>
+{% endblock %}
