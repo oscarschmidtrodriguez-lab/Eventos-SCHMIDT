@@ -47,6 +47,115 @@ ESTANCIAS_EXTRA = {
         "decoracion": ["Paneles acústicos textiles", "Alfombra gruesa"],
         "toque": "Rodapié LED de baja intensidad para moverse sin molestar la imagen.",
     },
+
+    # ---- Estancias premium: casas de ensueño Engel & Völkers ----
+
+    "spa": {
+        "claves": ["spa", "sauna", "hammam", "jacuzzi", "wellness", "bienestar", "relajacion", "relajación"],
+        "nombre": "Spa privado",
+        "distribucion": "Zona de aguas con sauna finlandesa, ducha de contrastes (lluvia tropical + chorro frío) y zona de relax con tumbonas térmicas. Piscina climatizada o jacuzzi integrado si hay espacio.",
+        "mobiliario": [
+            "Sauna finlandesa de cedro rojo con cristal para 4 personas",
+            "Ducha de contrastes con cascada, lluvia tropical y chorro de agua fría",
+            "Tumbonas térmicas de piedra con calefacción radiante",
+            "Jacuzzi empotrado para 2-4 personas con cromoterápia LED",
+        ],
+        "decoracion": [
+            "Revestimiento de piedra natural en paredes de agua",
+            "Iluminación cromática regulable (2700 K a RGB para cromoterapia)",
+            "Plantas de humedad: helechos, bambú",
+            "Toallas de rizo egipcio en estanterías de teca",
+        ],
+        "toque": "El spa no es un baño grande: tiene un circuito (sauna → ducha fría → descanso) y una luz que baja progresivamente del cálido al ámbar. Es un ritual, no una instalación.",
+    },
+    "bodega": {
+        "claves": ["bodega", "vino", "vinos", "cava", "wine", "vinoteca"],
+        "nombre": "Bodega de vinos",
+        "distribucion": "Sala climatizada (14-16 °C, 65-75 % HR) con botelleros de pared, mesa de cata para 6 y zona de decantación con luz puntual.",
+        "mobiliario": [
+            "Botelleros de roble y hierro forjado para 300-500 botellas en pared",
+            "Mesa de cata de roble macizo para 6 con iluminación cenital",
+            "Enfriador-expositor de vidrio templado para vinos de servicio",
+            "Sillones de cuero para sobremesa junto a la mesa",
+        ],
+        "decoracion": [
+            "Pared de piedra vista o ladrillo visto como fondo",
+            "Iluminación LED cálida (2400 K) en las baldas de los botelleros",
+            "Mapa de regiones vinícolas enmarcado",
+        ],
+        "toque": "Puerta de vidrio templado con control de clima: la bodega se ve desde el pasillo como una joyería, pero mantiene temperatura y humedad perfectas.",
+    },
+    "gimnasio": {
+        "claves": ["gimnasio", "gym", "fitness", "entrenamiento", "entrenar", "deporte"],
+        "nombre": "Gimnasio privado",
+        "distribucion": "Sala con suelo de caucho o tarima técnica, espejo de pared completa, zona de peso libre y zona de cardio frente a pantalla o ventanal.",
+        "mobiliario": [
+            "Espejo de pared completa (suelo a techo) en un lado",
+            "Rack de musculación multifuncional (Technogym o similar)",
+            "Cinta de correr y bicicleta estática frente al ventanal o pantalla 65″",
+            "Set de mancuernas y kettlebells en estantería de acero",
+            "Banco regulable y esterilla",
+        ],
+        "decoracion": [
+            "Suelo de caucho negro o gris de alto impacto",
+            "Ventilación forzada o ventana practicable para renovar el aire",
+            "Altavoz Bluetooth empotrado para música de entrenamiento",
+        ],
+        "toque": "El espejo es obligatorio, pero la luz LED perimetral detrás del espejo lo convierte en un gym de boutique: motivación visual sin deslumbramiento.",
+    },
+    "vestidor_lujo": {
+        "claves": ["vestidor", "walk-in", "closet", "armario vestidor", "dressing"],
+        "nombre": "Vestidor de lujo",
+        "distribucion": "Walk-in closet con isla central (cajones y superficie de apoyo), módulos de suelo a techo con iluminación LED en baldas, zona de zapatos con expositor y espejo de cuerpo entero.",
+        "mobiliario": [
+            "Isla central con cajones forrados de terciopelo y encimera de mármol",
+            "Módulos de roble o lacado con baldas, barras y cajones de suelo a techo",
+            "Expositor de zapatos retroiluminado con estantes de cristal",
+            "Espejo de cuerpo entero con iluminación de boutique (3000 K, CRI ≥ 95)",
+            "Butaca o puf para calzarse",
+        ],
+        "decoracion": [
+            "Moqueta o alfombra de lana gruesa en el suelo para confort descalzo",
+            "Tiradores de latón o cuero",
+            "Bandejas de piedra o piel para accesorios",
+        ],
+        "toque": "La isla central convierte el vestidor en una boutique privada: no es un armario abierto, es un ritual de vestirse. LED cálido en cada balda para ver los colores reales.",
+    },
+    "garaje_galeria": {
+        "claves": ["garaje", "garage", "coches", "coche", "coleccion", "colección", "showroom"],
+        "nombre": "Garaje-galería",
+        "distribucion": "Garaje de diseño con suelo de resina epoxi de alto brillo, iluminación tipo showroom, y zona de estar para contemplar la colección.",
+        "mobiliario": [
+            "Suelo de resina epoxi gris oscuro de alto brillo (efecto concesionario)",
+            "Iluminación LED lineal en perímetro y focos orientables sobre cada plaza",
+            "Estantería de acero y vidrio para cascos, maquetas y memorabilia",
+            "Sofá o banco de cuero para contemplar la colección",
+            "Plataforma giratoria (opcional) para el coche protagonista",
+        ],
+        "decoracion": [
+            "Pared de fondo con logo o lámina de arte automovilístico",
+            "Panel perforado de herramientas como pieza decorativa (si hay taller)",
+            "Vidrieras o puertas de cristal para ver los coches desde la casa",
+        ],
+        "toque": "La puerta del garaje con cristal templado: los coches se ven desde el pasillo o el salón como una obra de arte. Es la foto que Engel & Völkers pone en su web.",
+    },
+    "piscina_cubierta": {
+        "claves": ["piscina cubierta", "piscina climatizada", "piscina interior", "natacion", "natación", "nadar"],
+        "nombre": "Piscina cubierta climatizada",
+        "distribucion": "Piscina interior de 10-15 m con carril de natación, climatización del agua y del ambiente, ventanales laterales al jardín y zona de tumbonas.",
+        "mobiliario": [
+            "Piscina de obra revestida de gresite o piedra natural (10-15 m × 4 m)",
+            "Tumbonas de teca junto a la piscina sobre pavimento antideslizante",
+            "Sistema de deshumidificación y climatización del ambiente",
+            "Ducha y vestuario auxiliar junto a la entrada",
+        ],
+        "decoracion": [
+            "Ventanales de suelo a techo con vistas al jardín",
+            "Iluminación LED subacuática (blanca o cromática)",
+            "Plantas tropicales en maceteros grandes para crear ambiente de resort",
+        ],
+        "toque": "El techo retráctil o las puertas plegables permiten que en verano sea una piscina exterior y en invierno un spa cubierto: lo mejor de los dos mundos.",
+    },
 }
 
 
@@ -285,27 +394,49 @@ def generar_local(peticion, clave_estilo):
 # Claude
 # --------------------------------------------------------------------------
 
-SISTEMA = """Eres un interiorista y arquitecto de interiores de primer nivel, con \
-experiencia en viviendas de lujo. Recibes lo que un cliente quiere para su casa \
-y devuelves un proyecto de interiorismo completo, concreto y realizable, en español.
+SISTEMA = """Eres un interiorista y arquitecto de interiores de primer nivel mundial, \
+con experiencia en villas de lujo, penthouses y propiedades exclusivas como las que \
+vende Engel & Völkers, las que se viralizan en Pinterest y las que aparecen en \
+las cuentas de Instagram de diseño de interiores (@dezeen, @elledecor, @archdigest).
+
+Tu referencia visual: las casas de ensueño de revistas como Architectural Digest, \
+AD España, Elle Decoration — viviendas que combinan arquitectura espectacular \
+(dobles alturas, ventanales panorámicos, infinity pools) con interiorismo cálido \
+y habitable. No diseñas showrooms fríos: diseñas hogares donde la vida es hermosa.
 
 Cómo trabajas:
-- Respetas al máximo lo que pide el cliente; lo que no diga, lo decides tú con criterio profesional.
-- Distribución: priorizas espacios abiertos y luminosos, circulaciones de al menos 90 cm y \
-zonificación con alfombras, luz y techos en lugar de tabiques.
+- Respetas al máximo lo que pide el cliente; lo que no diga, lo decides tú con criterio \
+profesional, siempre aspirando al nivel más alto que el presupuesto permita.
+- Distribución: priorizas espacios abiertos y luminosos con dobles alturas donde sea posible, \
+circulaciones generosas y transición interior-exterior fluida (mismo pavimento, puertas \
+de gran luz, pérgolas bioclimáticas).
 - Paleta: 4–6 colores con código HEX real y reparto de uso (regla 60/30/10 o 70/20/10).
-- Materiales concretos (formato, acabado, dónde van).
-- Mobiliario con medidas o dimensiones clave cuando aporten.
-- Decoración acogedora: capas de textiles, plantas, arte, objetos con intención.
-- Iluminación en tres capas (ambiental, tarea, acento), cálida (2700–3000 K), regulable, CRI ≥ 90. \
+- Materiales de primera: mármoles con nombre (Calacatta, Sahara Noir, Portoro), maderas \
+nobles (roble ahumado, teca, nogal), piedra natural, vidrio de control solar. Nombra \
+formato, acabado y dónde va cada uno.
+- Mobiliario de diseño: menciona marcas de referencia (Minotti, B&B Italia, Poliform, \
+Cassina, Kettal para exterior) con medidas clave.
+- Domótica: integra sistema KNX o similar (escenas de luz, persianas motorizadas, \
+clima por zonas, audio multiroom) siempre que el estilo lo permita.
+- Cocinas de ensueño: islas de 3-4 m, electrodomésticos integrados (Gaggenau, Miele), \
+office/despensa oculto, grifo de diseño.
+- Baños tipo spa: ducha lluvia doble, bañera exenta de diseño (Agape, Boffi, Falper), \
+suelo radiante, mármol de suelo a techo.
+- Exterior premium: infinity pool con rebosadero, pérgola bioclimática, cocina de \
+verano, fire pit, jardín paisajístico con iluminación nocturna.
+- Iluminación en tres capas (ambiental, tarea, acento), cálida (2700–3000 K), regulable, \
+CRI ≥ 90, controlada por domótica con escenas (día, atardecer, cena, cine, noche). \
 Incluye SIEMPRE luz LED integrada en una viga del techo del salón, describiendo cómo se \
 instala (perfil, difusor, dirección de la luz, driver) y por qué queda perfecta.
-- Cada estancia termina con un "toque_experto": el detalle que marca la diferencia.
+- Cada estancia termina con un "toque_experto": el detalle que haría que la foto de esa \
+estancia se guardara en un tablero de Pinterest o se publicara en Architectural Digest.
 - Presupuesto orientativo en euros por partidas, con un total.
 - `render` son los colores HEX para una ilustración del salón (pared, suelo, techo, viga, \
 sofá, madera, acento, metal, textil y el color de la luz LED).
 
-Sé específico y evita generalidades vacías."""
+Piensa en cada proyecto como si fuera la propiedad estrella del catálogo de una \
+inmobiliaria de lujo: cada detalle cuenta para la foto, para la vida y para el valor \
+de reventa. Sé específico, concreto y evita generalidades vacías."""
 
 
 def _guia_estilo(clave):

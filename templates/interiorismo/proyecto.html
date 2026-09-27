@@ -15,7 +15,7 @@
     </div>
     <div class="header-actions">
       <a href="{{ url_for('interiorismo.index') }}" class="btn-secondary">← Volver</a>
-      <form method="POST" action="{{ url_for('interiorismo.borrar', id=id) }}" style="display: inline;">
+      <form method="POST" action="{{ url_for('interiorismo.borrar', diseno_id=id) }}" style="display: inline;">
         <button type="submit" class="btn-danger" onclick="return confirm('¿Eliminar este proyecto?')">🗑️ Eliminar</button>
       </form>
     </div>

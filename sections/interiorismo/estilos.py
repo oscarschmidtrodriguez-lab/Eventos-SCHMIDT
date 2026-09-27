@@ -565,6 +565,327 @@ ESTILOS = {
             },
         },
     },
+
+    # =====================================================================
+    # ESTILOS PREMIUM — Casas de ensueño tipo Engel & Völkers / Pinterest
+    # =====================================================================
+
+    "villa_contemporanea": {
+        "nombre": "Villa contemporánea",
+        "lema": "Ventanales infinitos, infinity pool y domótica total",
+        "palabras": [
+            "villa", "contemporanea", "contemporánea", "ventanales", "infinity",
+            "piscina infinita", "domotica", "domótica", "smart", "inteligente",
+            "engel", "volkers", "exclusiva", "premium", "mansión", "mansion",
+        ],
+        "coste_m2": (2000, 4000),
+        "concepto": (
+            "La villa que protagoniza los catálogos de Engel & Völkers: ventanales de suelo "
+            "a techo que borran el límite entre dentro y fuera, doble altura en el salón con "
+            "escalera escultórica, infinity pool que se funde con el horizonte, y domótica "
+            "KNX que controla luz, clima, persianas y música desde el móvil. Materiales nobles "
+            "— piedra natural, roble ahumado, vidrio de gran formato — y una paleta neutra "
+            "que deja que el paisaje sea la obra de arte principal."
+        ),
+        "principios": [
+            "Ventanales de suelo a techo con carpintería minimal (Schüco o similar) que desaparezcan de la vista.",
+            "Doble altura en salón con pasarela superior y escalera escultórica como pieza central.",
+            "Transición interior-exterior fluida: mismo pavimento dentro y fuera, puertas correderas de grandes luces.",
+            "Domótica KNX integrada: escenas de luz, persianas motorizadas, clima por zonas, audio multiroom.",
+            "Infinity pool orientada a las vistas, con rebosadero perimetral y tumbona integrada en agua.",
+            "Cocina de diseño con isla de 4 m, electrodomésticos Gaggenau o Miele integrados.",
+        ],
+        "paleta": [
+            ("Blanco arquitectónico", "#F0EDE8", "Paredes y volúmenes (60 %)"),
+            ("Piedra caliza", "#C8BFA8", "Suelos continuos interior-exterior"),
+            ("Roble ahumado", "#6B5B4A", "Carpintería, escalera y panelados"),
+            ("Antracita", "#3A3A3C", "Carpinterías exteriores, perfiles y cocina"),
+            ("Bronce oscuro", "#7A6348", "Grifería, tiradores y luminarias de acento"),
+            ("Azul profundo", "#1B3A5C", "Textil puntual: cojines, arte, fondo de estantería"),
+        ],
+        "materiales": [
+            ("Piedra caliza apomazada (gran formato 120×120)", "Suelo continuo interior-exterior"),
+            ("Roble ahumado cepillado", "Escalera, panelado de pared y cabeceros"),
+            ("Vidrio de control solar bajo emisivo", "Ventanales de grandes luces"),
+            ("Mármol Calacatta Oro", "Isla de cocina, baño principal y chimenea"),
+            ("Acero corten", "Jardineras, pérgola y detalles de fachada"),
+            ("Microhormigón", "Muros exteriores y bancadas de obra"),
+        ],
+        "render": {
+            "pared": "#F0EDE8", "suelo": "#C8BFA8", "techo": "#F5F2ED", "viga": "#6B5B4A",
+            "sofa": "#D6CFC2", "madera": "#6B5B4A", "acento": "#3A3A3C", "metal": "#7A6348",
+            "textil": "#1B3A5C", "led": "#FFD9A0",
+        },
+        "viga": "viga estructural de roble ahumado con perfil LED lineal empotrado en ambas caras y driver DALI regulable por domótica",
+        "estancias": {
+            "salon": {
+                "distribucion": "Salón de doble altura con ventanal panorámico de 6 m al jardín e infinity pool. Escalera escultórica de roble y vidrio como pieza central. Chimenea lineal empotrada en pared de piedra.",
+                "mobiliario": ["Sofá modular de 4 m en bouclé arena (B&B Italia o Minotti)", "Mesa de centro escultórica de mármol", "Par de butacas de diseño (Cassina o Fritz Hansen)", "Mueble TV integrado en panelado de roble ahumado"],
+                "decoracion": ["Alfombra de lana artesanal 4×5 m", "Escultura de gran formato junto a la escalera", "Cortinas motorizadas de lino con carril oculto", "Un cuadro de arte contemporáneo de gran formato"],
+                "toque": "La doble altura necesita una pieza vertical que la habite: una lámpara escultórica colgante de 3 m o una chimenea pasante que se vea desde la pasarela superior.",
+            },
+            "cocina": {
+                "distribucion": "Cocina abierta al salón con isla de 4 m de Calacatta Oro, columna de electrodomésticos Gaggenau totalmente integrados y office-despensa cerrado detrás.",
+                "mobiliario": ["Isla monolítica de mármol con fregadero integrado y zona de cocción", "Taburetes de cuero y acero (4 unidades)", "Columna de horno + vapor + café + enfriador de vinos", "Campana de techo integrada"],
+                "decoracion": ["Tres colgantes escultóricos de bronce sobre la isla", "Un bol de piedra como único objeto en la encimera"],
+                "toque": "El office detrás esconde electrodomésticos del día a día: la isla queda siempre impecable, como en una revista.",
+            },
+            "dormitorio": {
+                "distribucion": "Suite principal con ventanal panorámico al jardín, cabecero de pared completa en roble ahumado, vestidor passante y baño en suite con vistas.",
+                "mobiliario": ["Cama king 200×200 con cabecero panelado de roble hasta el techo", "Mesillas suspendidas con cajón invisible", "Banco tapizado a pie de cama", "Chaise longue junto al ventanal"],
+                "decoracion": ["Ropa de cama de lino lavado blanco con plaid de cashmere", "Cortinas opacas motorizadas + visillo de lino", "Apliques de lectura articulados de bronce oscuro"],
+                "toque": "El baño en suite se abre al dormitorio con una puerta corredera de vidrio y piedra: duchas con vistas al jardín, como en un resort de lujo.",
+            },
+            "bano": {
+                "distribucion": "Baño principal tipo spa: ducha a ras de suelo de doble rociador lluvia (techo y pared), bañera exenta frente al ventanal, doble lavabo sobre bancada de mármol flotante.",
+                "mobiliario": ["Bañera exenta de diseño (Agape o Boffi)", "Doble lavabo sobre bancada de Calacatta Oro", "Grifería empotrada de bronce oscuro", "Espejo retroiluminado sin marco de pared a pared"],
+                "decoracion": ["Toallas de rizo egipcio blancas", "Un jarrón de piedra con rama seca", "Banco de teca en la ducha"],
+                "toque": "Suelo radiante de piedra caliza y la misma piedra en paredes: el baño es una extensión del spa, no de la cocina.",
+            },
+            "exterior": {
+                "distribucion": "Jardín paisajístico con infinity pool de rebosadero perimetral, zona lounge cubierta por pérgola bioclimática, comedor exterior para 10 y cocina de verano.",
+                "mobiliario": ["Sofás de exterior Kettal o Tribu en aluminio y textileno", "Mesa de comedor de teca iroko para 10 personas", "Tumbonas integradas en la plataforma de la piscina", "Cocina de verano con parrilla, fregadero y frigorífico"],
+                "decoracion": ["Jardineras de acero corten con olivos y gramíneas", "Iluminación paisajística: balizas empotradas, bañadores en muros, LED subacuático", "Pérgola bioclimática con lamas orientables y cortinas de cristal"],
+                "toque": "La infinity pool debe tener el rebosadero en el lado de las vistas: el agua se funde con el horizonte, que es exactamente la foto de portada de Engel & Völkers.",
+            },
+        },
+    },
+
+    "penthouse_urbano": {
+        "nombre": "Penthouse urbano",
+        "lema": "Ático de lujo con skyline, terraza y sofisticación nocturna",
+        "palabras": [
+            "penthouse", "atico", "ático", "skyline", "ciudad", "terraza",
+            "nocturno", "nocturna", "cosmopolita", "rascacielos", "vistas",
+        ],
+        "coste_m2": (1800, 3500),
+        "concepto": (
+            "Un penthouse que vive del skyline: ventanales panorámicos de suelo a techo, "
+            "terraza envolvente con jacuzzi exterior, materiales oscuros y sofisticados "
+            "(mármol oscuro, bronce, maderas ahumadas) que brillan con la luz de la ciudad. "
+            "La noche es su momento: iluminación escenográfica que transforma cada espacio."
+        ),
+        "principios": [
+            "Ventanales panorámicos sin cortinas en las zonas comunes: las vistas son la decoración.",
+            "Paleta oscura y envolvente (gris carbón, negro, bronce) que refleja las luces de la ciudad.",
+            "Terraza como extensión del salón: jacuzzi, fire pit, lounge y comedor exterior.",
+            "Iluminación escenográfica con escenas: día, atardecer, cena, noche.",
+            "Materiales reflectantes (mármol pulido, vidrio ahumado, latón) que juegan con la luz urbana.",
+            "Bar/lounge integrado en el salón con estantería retroiluminada.",
+        ],
+        "paleta": [
+            ("Gris carbón", "#2C2C2E", "Paredes de acento y mobiliario (40 %)"),
+            ("Crema cálido", "#E8E0D0", "Paredes principales y textiles claros (30 %)"),
+            ("Bronce dorado", "#A0845C", "Metales, grifería, luminarias (15 %)"),
+            ("Mármol oscuro", "#4A4642", "Suelos de zonas nobles y encimeras"),
+            ("Terracota quemada", "#8C4A32", "Textil puntual: cojines y arte (acento)"),
+            ("Negro absoluto", "#0A0A0A", "Cocina, baño y detalles gráficos"),
+        ],
+        "materiales": [
+            ("Mármol Sahara Noir pulido (gran formato)", "Suelo de salón y recibidor"),
+            ("Roble ahumado con acabado mate", "Panelados, cabeceros y estanterías"),
+            ("Vidrio ahumado y espejo bronce", "Puertas, separadores y estantería del bar"),
+            ("Latón cepillado envejecido", "Grifería, tiradores y luminarias"),
+            ("Piedra sinterizada negra (Dekton Kelya)", "Encimera de cocina e isla"),
+            ("Terciopelo y cashmere", "Sofás, butacas y ropa de cama"),
+        ],
+        "render": {
+            "pared": "#E8E0D0", "suelo": "#4A4642", "techo": "#2C2C2E", "viga": "#0A0A0A",
+            "sofa": "#2C2C2E", "madera": "#6B5B4A", "acento": "#A0845C", "metal": "#A0845C",
+            "textil": "#8C4A32", "led": "#FFD49A",
+        },
+        "viga": "falsa viga de acero negro mate con perfil LED lineal de luz cálida (2700 K) en su cara inferior, regulable por escenas domóticas",
+        "estancias": {
+            "salon": {
+                "distribucion": "Gran salón abierto con ventanales panorámicos al skyline, zona de estar hundida (sunken living), chimenea de bioetanol lineal y bar con estantería retroiluminada.",
+                "mobiliario": ["Sofá modular en terciopelo gris carbón (Poliform o Flexform)", "Mesa de centro de mármol Sahara Noir", "Par de butacas de cuero coñac", "Bar con barra de mármol, taburetes de latón y estantería de roble ahumado retroiluminada"],
+                "decoracion": ["Alfombra de seda y lana gris antracita", "Arte contemporáneo de gran formato con iluminación de acento", "Cortinas motorizadas de terciopelo oscuro para las noches de cine"],
+                "toque": "La zona hundida (2-3 escalones) crea intimidad frente a las vistas y diferencia el salón del paso: es la foto de Instagram que todo el mundo guarda.",
+            },
+            "cocina": {
+                "distribucion": "Cocina oculta tras panelado de roble que se abre y cierra: cuando está cerrada parece una pared; abierta, revela isla de piedra negra, columna de Gaggenau y grifo de latón.",
+                "mobiliario": ["Isla de 3,5 m de Dekton negro con fregadero integrado", "Taburetes de latón y cuero", "Columna de electrodomésticos totalmente integrada"],
+                "decoracion": ["Colgantes escultóricos de vidrio ahumado sobre la isla"],
+                "toque": "La cocina desaparece: los paneles de roble se cierran y el salón se convierte en un lounge sin rastro de cocina.",
+            },
+            "dormitorio": {
+                "distribucion": "Suite con cabecero tapizado de pared a pared en terciopelo, vestidor walk-in y baño en suite de mármol oscuro con vistas al skyline.",
+                "mobiliario": ["Cama king con cabecero de terciopelo gris y apliques de latón integrados", "Mesillas de mármol suspendidas", "Chaise longue de cuero frente al ventanal", "Vestidor walk-in con isla central e iluminación de boutique"],
+                "decoracion": ["Ropa de cama de algodón egipcio 800 hilos", "Cortinas opacas motorizadas para el amanecer", "Alfombra de piel"],
+                "toque": "Un telescopio vintage de latón junto al ventanal: contemplar la ciudad de noche es el lujo silencioso de vivir en un ático.",
+            },
+            "bano": {
+                "distribucion": "Baño de mármol Sahara Noir de suelo a techo con ducha doble lluvia, bañera exenta negra mate y doble lavabo flotante.",
+                "mobiliario": ["Bañera exenta en negro mate (Falper o Agape)", "Doble lavabo de mármol flotante", "Grifería de latón envejecido empotrada", "Espejo retroiluminado con antivaho"],
+                "decoracion": ["Toallas negras y blancas de algodón egipcio", "Velas de diseñador (Diptyque, Byredo)"],
+                "toque": "Un nicho retroiluminado en la ducha con piedra natural de contraste: convierte un hueco funcional en joyería arquitectónica.",
+            },
+            "exterior": {
+                "distribucion": "Terraza envolvente con zona lounge, jacuzzi empotrado con vistas al skyline, fire pit central, comedor exterior y jardín vertical.",
+                "mobiliario": ["Jacuzzi empotrado para 4 personas con LED cromático", "Fire pit de hormigón con sofás en U alrededor", "Mesa de comedor para 8 de piedra sinterizada", "Tumbonas de diseño (Paola Lenti o Dedon)"],
+                "decoracion": ["Jardín vertical con riego automático", "Iluminación LED en el pavimento marcando el perímetro", "Macetas de fibra en negro con bambú"],
+                "toque": "El fire pit y el jacuzzi orientados al skyline: son las dos fotos que aparecen en Idealista Luxury y en la portada de Instagram de la inmobiliaria.",
+            },
+        },
+    },
+
+    "resort_tropical": {
+        "nombre": "Resort tropical",
+        "lema": "Bali en casa: indoor-outdoor, agua y naturaleza",
+        "palabras": [
+            "tropical", "bali", "resort", "ibiza", "maldivas", "paraiso", "paraíso",
+            "selva", "exotico", "exótico", "abierta", "naturaleza",
+        ],
+        "coste_m2": (1500, 3000),
+        "concepto": (
+            "La villa de Bali o las Maldivas traída a tu parcela: pabellones abiertos que "
+            "borran el límite entre interior y jardín, techos altos con vigas de madera tropical, "
+            "piscina de agua turquesa rodeada de vegetación exuberante, y materiales naturales "
+            "(teca, piedra volcánica, ratán premium) que envejecen con elegancia. Cada rincón "
+            "es un retiro: hamacas, daybeds, bañeras exteriores, duchas al aire libre."
+        ),
+        "principios": [
+            "Pabellones abiertos con puertas plegables que eliminan las paredes hacia el jardín.",
+            "Techos altos inclinados con vigas de madera tropical vistas y ventiladores de techo.",
+            "Piscina central como eje de la casa, visible desde todas las estancias principales.",
+            "Materiales que dialogan con la naturaleza: teca, piedra volcánica, bambú, ratán artesanal.",
+            "Vegetación integrada: jardines interiores, macetas de piedra, trepadoras en pérgolas.",
+            "Agua como elemento decorativo: fuentes, estanques, cascadas de pared.",
+        ],
+        "paleta": [
+            ("Blanco cal tropical", "#FAF6EE", "Paredes y telas ligeras (50 %)"),
+            ("Teca dorada", "#9A7B4F", "Vigas, mobiliario y carpintería (25 %)"),
+            ("Piedra volcánica", "#5C5550", "Suelos exteriores, muros y lavabos"),
+            ("Verde tropical", "#3A6B4A", "Vegetación y textil de acento"),
+            ("Turquesa agua", "#5BACA3", "Fondo de piscina, cerámica y detalles"),
+            ("Arena coral", "#E8C8A0", "Textiles y alfombras de fibra"),
+        ],
+        "materiales": [
+            ("Teca reciclada", "Vigas, mesas, puertas y decking de piscina"),
+            ("Piedra volcánica basáltica", "Suelos exteriores, ducha exterior y lavabos tallados"),
+            ("Ratán premium y bambú", "Cabeceros, lámparas y sillas"),
+            ("Microcemento color arena", "Suelos interiores continuos"),
+            ("Vidrio templado plegable", "Puertas de gran formato interior-exterior"),
+            ("Paja de palapa o caña", "Techos de pérgolas y pabellones auxiliares"),
+        ],
+        "render": {
+            "pared": "#FAF6EE", "suelo": "#C8B898", "techo": "#F0E8D8", "viga": "#9A7B4F",
+            "sofa": "#E8C8A0", "madera": "#9A7B4F", "acento": "#5BACA3", "metal": "#5C5550",
+            "textil": "#3A6B4A", "led": "#FFD49A",
+        },
+        "viga": "viga de teca maciza con tira LED cálida (2700 K) oculta en su cara superior, que baña el techo alto de luz dorada como un atardecer perpetuo",
+        "estancias": {
+            "salon": {
+                "distribucion": "Pabellón principal con techo alto inclinado y vigas de teca, puertas plegables que se abren completamente al jardín y la piscina. Ventilador de techo de madera.",
+                "mobiliario": ["Sofá bajo y profundo de lino blanco con cojines verdes (sala tipo daybed)", "Mesa de centro de tronco de teca pulida", "Butacas de ratán artesanal oversized", "Mueble bajo de teca con puertas de caña"],
+                "decoracion": ["Alfombra de yute 4×3 m", "Lámparas de bambú colgantes a distintas alturas", "Plantas tropicales: monstera, strelitzia, palmera areca", "Jarrones de piedra volcánica con ramas"],
+                "toque": "Las puertas plegables abiertas hacen que el salón sea la piscina y la piscina sea el salón: no hay dentro ni fuera.",
+            },
+            "cocina": {
+                "distribucion": "Cocina abierta con isla de microcemento y teca, estantes abiertos de teca y vistas al jardín. Cocina de verano exterior separada para barbacoa.",
+                "mobiliario": ["Isla de microcemento con encimera de teca maciza", "Taburetes de ratán", "Estantes abiertos de teca en lugar de armarios altos", "Fregadero de piedra tallada"],
+                "decoracion": ["Cestos colgantes de bambú", "Vajilla de cerámica artesanal turquesa", "Hierbas aromáticas en macetas de barro"],
+                "toque": "Sin armarios altos: solo estantes abiertos de teca que dejan ver el techo y la luz.",
+            },
+            "dormitorio": {
+                "distribucion": "Suite tipo pabellón con cama con dosel de teca y cortinas de lino blanco, abierta al jardín privado con ducha exterior.",
+                "mobiliario": ["Cama king con dosel de teca y cortinas de lino", "Mesillas de tronco de madera", "Banco de teca a pie de cama", "Ventilador de techo de palma y latón"],
+                "decoracion": ["Mosquitera de lino blanco funcional", "Ropa de cama blanca con plaid de algodón orgánico", "Lámpara de ratán de gran formato"],
+                "toque": "La ducha exterior privada del dormitorio principal: rodeada de plantas, con suelo de piedra de río y cielo abierto. Es la foto que más se guarda en Pinterest.",
+            },
+            "bano": {
+                "distribucion": "Baño semi-exterior con bañera de piedra tallada, ducha lluvia al aire libre con jardín de helechos, lavabo de piedra volcánica sobre encimera de teca.",
+                "mobiliario": ["Bañera tallada en piedra de río", "Lavabo de piedra volcánica sobre mueble de teca", "Ducha lluvia empotrada en techo + ducha exterior", "Espejo de teca con marco rústico"],
+                "decoracion": ["Helechos y musgo en jardín de sombra", "Toallas de algodón orgánico color arena", "Jabones artesanales en bandeja de madera"],
+                "toque": "La bañera de piedra bajo las estrellas con velas: el ritual de spa del resort, ahora en tu casa.",
+            },
+            "exterior": {
+                "distribucion": "Jardín tropical con piscina de borde infinito rodeada de decking de teca, cabana con daybed, comedor exterior bajo pérgola de caña, y senderos de piedra entre vegetación.",
+                "mobiliario": ["Daybed balinés con dosel en la cabana junto a la piscina", "Mesa de comedor de teca para 8 bajo pérgola", "Tumbonas de teca con colchonetas blancas", "Hamaca entre dos palmeras"],
+                "decoracion": ["Antorchas de bambú en senderos", "Macetas de piedra volcánica con palmeras y plumeria", "Cascada de pared de piedra en un muro del jardín", "LED subacuático turquesa en la piscina"],
+                "toque": "La cabana con daybed junto a la piscina es donde se vive de verdad: cortinas de lino, cojines, una mesa baja y la piscina a tus pies.",
+            },
+        },
+    },
+
+    "art_deco_glam": {
+        "nombre": "Art Déco glamuroso",
+        "lema": "Geometría, dorado y glamour de los años 20 en el siglo XXI",
+        "palabras": [
+            "art deco", "artdeco", "glamour", "glamuroso", "glamurosa", "gatsby",
+            "dorado", "oro", "geometrico", "geométrico", "años 20", "hollywood",
+        ],
+        "coste_m2": (1600, 3000),
+        "concepto": (
+            "El glamour de los años 20 reimaginado: geometría audaz, superficies lacadas, "
+            "mármoles veteados, latón y terciopelo en colores joya (esmeralda, zafiro, rubí). "
+            "Cada estancia es escenografía: espejos sunburst, motivos de abanico, curvas "
+            "y líneas que crean simetría y drama. Es la casa que parece un set de Gatsby "
+            "pero con confort del siglo XXI."
+        ),
+        "principios": [
+            "Simetría rigurosa: mobiliario emparejado, apliques a juego, espejos enfrentados.",
+            "Motivos geométricos Art Déco: abanico, zigzag, escalonado, sunburst.",
+            "Colores joya (esmeralda, zafiro, amatista) sobre fondos neutros de crema y negro.",
+            "Superficies lacadas de alto brillo y mármoles veteados que reflejan luz.",
+            "Latón pulido en todas las luminarias, grifería y herrajes.",
+            "Terciopelo como textil protagonista en sofás, cabeceros y cortinas.",
+        ],
+        "paleta": [
+            ("Crema marfil", "#F2EBD9", "Paredes y fondos (50 %)"),
+            ("Negro lacado", "#0E0E10", "Muebles, puertas y marcos (20 %)"),
+            ("Latón pulido", "#C8A84E", "Metales y detalles geométricos (15 %)"),
+            ("Esmeralda", "#1A5C3A", "Terciopelo principal y acentos (10 %)"),
+            ("Mármol Portoro", "#2C2418", "Suelos y encimeras, veteado dorado"),
+            ("Rosa empolvado", "#C8A092", "Textil secundario puntual"),
+        ],
+        "materiales": [
+            ("Mármol Portoro nero (vetas doradas)", "Suelo del recibidor, encimeras y chimenea"),
+            ("Lacado negro alto brillo", "Puertas, muebles y panelados"),
+            ("Latón pulido", "Luminarias, marcos de espejo, grifería y herrajes"),
+            ("Terciopelo de viscosa", "Sofás, butacas, cabeceros y cortinas"),
+            ("Espejo ahumado y biselado", "Paneles decorativos y fondos de bar"),
+            ("Parqué de roble en espiga oscura", "Suelos de salón y dormitorios"),
+        ],
+        "render": {
+            "pared": "#F2EBD9", "suelo": "#3A3020", "techo": "#F2EBD9", "viga": "#0E0E10",
+            "sofa": "#1A5C3A", "madera": "#3A3020", "acento": "#C8A84E", "metal": "#C8A84E",
+            "textil": "#1A5C3A", "led": "#FFD9A0",
+        },
+        "viga": "moldura escalonada Art Déco de escayola lacada en negro con perfil LED cálido integrado en los escalones, creando un efecto de líneas luminosas geométricas",
+        "estancias": {
+            "salon": {
+                "distribucion": "Salón simétrico con dos sofás enfrentados, mesa de centro de mármol Portoro entre ellos, chimenea con marco geométrico de latón como eje, y bar con espejos ahumados.",
+                "mobiliario": ["Dos sofás de terciopelo esmeralda enfrentados", "Mesa de centro redonda de mármol Portoro con base de latón", "Bar-vitrina de espejo ahumado con estantes de cristal y latón", "Par de butacas de terciopelo rosa empolvado"],
+                "decoracion": ["Espejo sunburst de latón sobre la chimenea (diámetro 150 cm)", "Lámpara de araña geométrica de latón y cristal", "Alfombra geométrica Art Déco en crema y negro", "Cojines de terciopelo con bordados dorados"],
+                "toque": "El espejo sunburst duplica la lámpara de araña y las velas de la chimenea: por la noche el salón brilla como un club de jazz de los años 20.",
+            },
+            "cocina": {
+                "distribucion": "Cocina de lujo con isla de mármol Portoro, frentes lacados negro alto brillo con tiradores de latón, y vitrina Art Déco para cristalería.",
+                "mobiliario": ["Isla de mármol Portoro con tiradores de latón escalonados", "Vitrina de cristal biselado y latón", "Taburetes de terciopelo esmeralda con base de latón"],
+                "decoracion": ["Colgantes Art Déco de vidrio opal y latón sobre la isla", "Grifería de latón pulido"],
+                "toque": "Los tiradores escalonados de latón son la joyería de la cocina: cada cajón es un detalle de diseño.",
+            },
+            "dormitorio": {
+                "distribucion": "Suite con cabecero escalonado tapizado en terciopelo esmeralda de pared a pared, mesillas simétricas de espejo y latón, y tocador Art Déco.",
+                "mobiliario": ["Cabecero de terciopelo con motivo geométrico escalonado", "Par de mesillas de espejo ahumado con patas de latón", "Tocador con espejo triple y banqueta tapizada", "Armario con puertas de espejo biselado"],
+                "decoracion": ["Lámparas de mesilla de cristal y latón", "Ropa de cama de satén crema con ribete esmeralda", "Cortinas de terciopelo negro con alzapaños de latón"],
+                "toque": "El tocador con espejo triple y luz de Hollywood: el ritual de arreglarse es parte del glamour.",
+            },
+            "bano": {
+                "distribucion": "Baño de mármol Portoro con bañera exenta dorada, lavabo de latón y mosaico geométrico Art Déco en suelo y paredes.",
+                "mobiliario": ["Bañera exenta con exterior de latón pulido", "Lavabo de latón empotrado en mármol", "Espejo con marco de latón escalonado", "Grifería de latón pulido empotrada"],
+                "decoracion": ["Mosaico de mármol blanco y negro en motivo abanico", "Toallas blancas con bordado dorado"],
+                "toque": "El mosaico de abanico en el suelo de la ducha: una obra de arte que pisas descalzo cada mañana.",
+            },
+            "exterior": {
+                "distribucion": "Terraza Art Déco con suelo de mosaico geométrico, pérgola de hierro con cortinas, y zona de cóctel con barra de latón.",
+                "mobiliario": ["Barra de cóctel de mármol con banquetas de latón", "Sofá exterior de líneas rectas con cojines de rayas geométricas", "Mesa de comedor redonda de mármol"],
+                "decoracion": ["Apliques de pared geométricos de latón", "Macetas de cerámica negra con formas escalonadas"],
+                "toque": "La barra de cóctel exterior con espejo de fondo: cada terraza nocturna es una fiesta de Gatsby.",
+            },
+        },
+    },
 }
 
 ESTILO_POR_DEFECTO = "moderno_elegante"

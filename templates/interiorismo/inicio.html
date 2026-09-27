@@ -66,6 +66,22 @@
             <span class="style-dot" style="background: linear-gradient(135deg, #E8D4C4 0%, #A0826D 100%);"></span>
             <span>Boho</span>
           </button>
+          <button type="button" class="style-btn premium-btn" data-style="villa_contemporanea" title="Ventanales, infinity pool, domótica">
+            <span class="style-dot" style="background: linear-gradient(135deg, #F0EDE8 0%, #6B5B4A 50%, #1B3A5C 100%);"></span>
+            <span>Villa contemporánea</span>
+          </button>
+          <button type="button" class="style-btn premium-btn" data-style="penthouse_urbano" title="Ático de lujo, skyline, terraza">
+            <span class="style-dot" style="background: linear-gradient(135deg, #2C2C2E 0%, #A0845C 50%, #E8E0D0 100%);"></span>
+            <span>Penthouse urbano</span>
+          </button>
+          <button type="button" class="style-btn premium-btn" data-style="resort_tropical" title="Bali en casa, indoor-outdoor">
+            <span class="style-dot" style="background: linear-gradient(135deg, #FAF6EE 0%, #9A7B4F 50%, #5BACA3 100%);"></span>
+            <span>Resort tropical</span>
+          </button>
+          <button type="button" class="style-btn premium-btn" data-style="art_deco_glam" title="Geometría, dorado y glamour Gatsby">
+            <span class="style-dot" style="background: linear-gradient(135deg, #F2EBD9 0%, #C8A84E 50%, #1A5C3A 100%);"></span>
+            <span>Art Déco glam</span>
+          </button>
         </div>
         <input type="hidden" id="estilo_oculto" name="estilo_oculto" value="">
       </div>
@@ -140,6 +156,73 @@
     </div>
   </div>
 
+  <!-- CASAS DE ENSUEÑO — Ejemplos Premium -->
+  <div class="card premium-section">
+    <h2>Casas de ensueño</h2>
+    <p class="subtitle" style="margin-top: -0.5rem;">Inspiradas en las propiedades de Engel & Völkers, Pinterest e Instagram</p>
+    <div class="examples-grid">
+      <div class="example-box premium-example">
+        <h3>Villa con infinity pool</h3>
+        <p>"Villa contemporánea de 500 m² con doble altura en el salón, ventanales panorámicos de suelo a techo, infinity pool con vistas al mar, spa privado con sauna, bodega de vinos. Domótica total. Cocina Gaggenau con isla de mármol Calacatta."</p>
+        <form method="POST" action="{{ url_for('interiorismo.disenar') }}" style="display: inline;">
+          <input type="hidden" name="peticion" value="Villa contemporánea de 500 m² con doble altura en el salón, ventanales panorámicos de suelo a techo, infinity pool con vistas al mar, spa privado con sauna, bodega de vinos. Domótica total. Cocina Gaggenau con isla de mármol Calacatta.">
+          <input type="hidden" name="estilo_oculto" value="villa_contemporanea">
+          <button type="submit" class="btn-small btn-premium">Generar</button>
+        </form>
+      </div>
+
+      <div class="example-box premium-example">
+        <h3>Penthouse con skyline</h3>
+        <p>"Ático de 300 m² con terraza envolvente, jacuzzi exterior con vistas al skyline, salón hundido con chimenea de bioetanol, bar con espejo ahumado, vestidor walk-in de boutique. Todo en mármol oscuro, bronce y terciopelo."</p>
+        <form method="POST" action="{{ url_for('interiorismo.disenar') }}" style="display: inline;">
+          <input type="hidden" name="peticion" value="Ático de 300 m² con terraza envolvente, jacuzzi exterior con vistas al skyline, salón hundido con chimenea de bioetanol, bar con espejo ahumado, vestidor walk-in de boutique. Todo en mármol oscuro, bronce y terciopelo.">
+          <input type="hidden" name="estilo_oculto" value="penthouse_urbano">
+          <button type="submit" class="btn-small btn-premium">Generar</button>
+        </form>
+      </div>
+
+      <div class="example-box premium-example">
+        <h3>Villa tropical tipo Bali</h3>
+        <p>"Villa de 400 m² tipo resort de Bali: pabellones abiertos con vigas de teca, piscina infinita rodeada de vegetación tropical, baño con bañera de piedra al aire libre, cabana con daybed junto a la piscina. Ducha exterior en el dormitorio principal."</p>
+        <form method="POST" action="{{ url_for('interiorismo.disenar') }}" style="display: inline;">
+          <input type="hidden" name="peticion" value="Villa de 400 m² tipo resort de Bali: pabellones abiertos con vigas de teca, piscina infinita rodeada de vegetación tropical, baño con bañera de piedra al aire libre, cabana con daybed junto a la piscina. Ducha exterior en el dormitorio principal.">
+          <input type="hidden" name="estilo_oculto" value="resort_tropical">
+          <button type="submit" class="btn-small btn-premium">Generar</button>
+        </form>
+      </div>
+
+      <div class="example-box premium-example">
+        <h3>Mansión Art Déco</h3>
+        <p>"Mansión Art Déco de 600 m²: geometría dorada, mármol Portoro, terciopelo esmeralda, espejos sunburst. Salón con chimenea y bar de espejo ahumado. Baño con bañera dorada. Terraza con barra de cóctel. Garaje-galería para colección de coches."</p>
+        <form method="POST" action="{{ url_for('interiorismo.disenar') }}" style="display: inline;">
+          <input type="hidden" name="peticion" value="Mansión Art Déco de 600 m²: geometría dorada, mármol Portoro, terciopelo esmeralda, espejos sunburst. Salón con chimenea y bar de espejo ahumado. Baño con bañera dorada. Terraza con barra de cóctel. Garaje-galería para colección de coches.">
+          <input type="hidden" name="estilo_oculto" value="art_deco_glam">
+          <button type="submit" class="btn-small btn-premium">Generar</button>
+        </form>
+      </div>
+
+      <div class="example-box premium-example">
+        <h3>Casa con spa y gimnasio</h3>
+        <p>"Casa moderna de 350 m² con spa completo (sauna, jacuzzi, duchas de contrastes), gimnasio privado con espejo de pared, vestidor de lujo con isla central, y piscina cubierta climatizada. 4 habitaciones, estilo contemporáneo."</p>
+        <form method="POST" action="{{ url_for('interiorismo.disenar') }}" style="display: inline;">
+          <input type="hidden" name="peticion" value="Casa moderna de 350 m² con spa completo (sauna, jacuzzi, duchas de contrastes), gimnasio privado con espejo de pared, vestidor de lujo con isla central, y piscina cubierta climatizada. 4 habitaciones, estilo contemporáneo.">
+          <input type="hidden" name="estilo_oculto" value="villa_contemporanea">
+          <button type="submit" class="btn-small btn-premium">Generar</button>
+        </form>
+      </div>
+
+      <div class="example-box premium-example">
+        <h3>Villa con bodega y garaje</h3>
+        <p>"Villa de 450 m² con bodega de vinos para 500 botellas con mesa de cata, garaje-galería con cristal templado para 4 coches, sala de cine con Dolby Atmos, y despacho biblioteca. Estilo clásico de lujo actualizado."</p>
+        <form method="POST" action="{{ url_for('interiorismo.disenar') }}" style="display: inline;">
+          <input type="hidden" name="peticion" value="Villa de 450 m² con bodega de vinos para 500 botellas con mesa de cata, garaje-galería con cristal templado para 4 coches, sala de cine con Dolby Atmos, y despacho biblioteca. Estilo clásico de lujo actualizado.">
+          <input type="hidden" name="estilo_oculto" value="clasico_lujo">
+          <button type="submit" class="btn-small btn-premium">Generar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <!-- CATÁLOGO DE ESTILOS -->
   <div class="card">
     <h2>Nuestros estilos</h2>
@@ -207,6 +290,42 @@
         <p class="style-desc">Colorido pero armónico. Macramé, plantas, cojines en tela. Mezcla de épocas y culturas con buen gusto. Hippie sofisticado, acogedor y personal.</p>
         <span class="style-price">600–1.000 €/m²</span>
       </div>
+
+      <div class="style-card premium-card">
+        <div class="style-preview" style="background: linear-gradient(135deg, #F0EDE8 0%, #6B5B4A 40%, #1B3A5C 100%);"></div>
+        <span class="premium-badge">Premium</span>
+        <h3>Villa Contemporánea</h3>
+        <p class="style-lema">El lujo hecho arquitectura viva</p>
+        <p class="style-desc">Ventanales panorámicos, doble altura, infinity pool, domótica KNX. Cocina Gaggenau, mármol Calacatta, detalles en acero corten. La villa de Engel & Völkers.</p>
+        <span class="style-price">2.000–4.000 €/m²</span>
+      </div>
+
+      <div class="style-card premium-card">
+        <div class="style-preview" style="background: linear-gradient(135deg, #2C2C2E 0%, #A0845C 40%, #E8E0D0 100%);"></div>
+        <span class="premium-badge">Premium</span>
+        <h3>Penthouse Urbano</h3>
+        <p class="style-lema">La ciudad a tus pies, el cielo tu techo</p>
+        <p class="style-desc">Skyline envolvente, salón hundido, chimenea de bioetanol, bar con espejo ahumado. Mármol Sahara Noir, bronce y terciopelo. Jacuzzi y fire pit en rooftop.</p>
+        <span class="style-price">1.800–3.500 €/m²</span>
+      </div>
+
+      <div class="style-card premium-card">
+        <div class="style-preview" style="background: linear-gradient(135deg, #FAF6EE 0%, #9A7B4F 40%, #5BACA3 100%);"></div>
+        <span class="premium-badge">Premium</span>
+        <h3>Resort Tropical</h3>
+        <p class="style-lema">Bali en casa: naturaleza y serenidad infinita</p>
+        <p class="style-desc">Pabellones abiertos con vigas de teca, piscina rodeada de vegetación, bañera de piedra volcánica al aire libre, cabana con daybed. Ducha exterior y playa privada.</p>
+        <span class="style-price">1.500–3.000 €/m²</span>
+      </div>
+
+      <div class="style-card premium-card">
+        <div class="style-preview" style="background: linear-gradient(135deg, #F2EBD9 0%, #C8A84E 40%, #1A5C3A 100%);"></div>
+        <span class="premium-badge">Premium</span>
+        <h3>Art Déco Glam</h3>
+        <p class="style-lema">Glamour Gatsby: geometría, oro y esmeralda</p>
+        <p class="style-desc">Patrones geométricos, mármol Portoro con vetas doradas, terciopelo esmeralda, latón pulido, espejos sunburst. Bar de cóctel y chimenea de marco dorado.</p>
+        <span class="style-price">1.600–3.000 €/m²</span>
+      </div>
     </div>
   </div>
 
@@ -223,7 +342,7 @@
             <p class="project-date">{{ diseno.created_at }}</p>
           </div>
           <div class="project-actions">
-            <a href="{{ url_for('interiorismo.ver', id=diseno.id) }}" class="btn-small">Ver proyecto</a>
+            <a href="{{ url_for('interiorismo.ver', diseno_id=diseno.id) }}" class="btn-small">Ver proyecto</a>
           </div>
         </div>
         <p class="project-request">{{ diseno.peticion[:100] }}...</p>
@@ -515,6 +634,75 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+/* Premium styles */
+.premium-btn {
+  border-color: #C8A84E;
+  background: linear-gradient(135deg, rgba(200, 168, 78, 0.08) 0%, rgba(200, 168, 78, 0.02) 100%);
+}
+
+.premium-btn:hover {
+  border-color: #D4AF37;
+  background: linear-gradient(135deg, rgba(200, 168, 78, 0.15) 0%, rgba(200, 168, 78, 0.05) 100%);
+  color: #D4AF37;
+}
+
+.premium-btn.active {
+  border-color: #D4AF37;
+  background: rgba(200, 168, 78, 0.15);
+  color: #D4AF37;
+}
+
+.premium-section {
+  border: 1px solid rgba(200, 168, 78, 0.3);
+  background: linear-gradient(135deg, var(--surface) 0%, rgba(200, 168, 78, 0.03) 100%);
+}
+
+.premium-example {
+  border-color: rgba(200, 168, 78, 0.25);
+}
+
+.premium-example:hover {
+  border-color: #C8A84E;
+  box-shadow: 0 4px 16px rgba(200, 168, 78, 0.12);
+}
+
+.btn-premium {
+  background: linear-gradient(135deg, #C8A84E 0%, #D4AF37 100%);
+  border-color: #C8A84E;
+  color: #1a1a1a;
+  font-weight: 700;
+}
+
+.btn-premium:hover {
+  background: linear-gradient(135deg, #D4AF37 0%, #E8C54E 100%);
+  color: #1a1a1a;
+}
+
+.premium-card {
+  border-color: rgba(200, 168, 78, 0.3);
+  position: relative;
+}
+
+.premium-card:hover {
+  border-color: #D4AF37;
+  box-shadow: 0 8px 24px rgba(200, 168, 78, 0.2);
+}
+
+.premium-badge {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  background: linear-gradient(135deg, #C8A84E, #D4AF37);
+  color: #1a1a1a;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  z-index: 1;
 }
 
 @media (max-width: 640px) {
